@@ -1,12 +1,14 @@
 <link href='http://fonts.googleapis.com/css?family=Orbitron:400' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+
+
 <div class="col-md-3 left_col"    style=" position: fixed;">
                 <div class="left_col scroll-view">
 
 					
 					
                     <div class="navbar nav_title" style="background-color:black; border: 0; font-family: 'Orbitron', sans-serif;">
-                        <a href="index.html" class="site_title"> <img style="    margin-left: 10px;" id="logo" src="../logoTFG.png"><span style=" color:white; padding:5px;   font-size: 30px;    vertical-align: middle;">Col<span>Stooy</span></span></a>
+                        <a href="principal.php" class="site_title"> <img style="    margin-left: 10px;" id="logo" src="../logoTFG.png"><span style=" color:white; padding:5px;   font-size: 30px;    vertical-align: middle;">Col<span>Stats</span></span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -23,7 +25,7 @@
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="index.html">Presentation</a>
                                         </li>
-                                        <li><a href="panelPrincipal.php">Dashboard Pannel</a>
+                                        <li><a href="principal.php">Dashboard Pannel</a>
                                         </li>
                                        
                                     </ul>
@@ -72,58 +74,33 @@
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="#">First Global Pannel</a>
                                         </li>
-                                        <li><a href="#">Second Global Pannel</a>
-                                        </li>
-                                        <li><a href="#">Third Global Pannel</a>
-                                        </li>
-                                        <li><a href="#">Fourth Global Pannel</a>
-                                        </li>
+                                       
                                         
                                     </ul>
                                 </li>
 								
 								<li><a><i class="fa fa-users"></i> Users Statistics <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="#">First Special Pannel</a>
+                                        <li><a href="usuariosGlobales.php">Global User Wikia Statistics</a>
                                         </li>
-                                        <li><a href="#">Second Special Pannel</a>
-                                        </li>
-                                        <li><a href="#">Third Special Pannel</a>
-                                        </li>
-                                        <li><a href="#">Fourth Special Pannel</a>
-                                        </li>
+                                        
                                         
                                     </ul>
                                 </li>
 								
-								<li><a><i class="fa fa-trophy"></i> Badges Statistics <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu" style="display: none">
-                                        <li><a href="#">First Special Pannel</a>
-                                        </li>
-                                        <li><a href="#">Second Special Pannel</a>
-                                        </li>
-                                        <li><a href="#">Third Special Pannel</a>
-                                        </li>
-                                        <li><a href="#">Fourth Special Pannel</a>
-                                        </li>
-                                        
-                                    </ul>
-                                </li>
 								
                             </ul>
                         </div>
                         <div class="menu_section">
-                            <h3 style="font-family: 'Montserrat Alternates', sans-serif;">ColStooy</h3>
+                            <h3 style="font-family: 'Montserrat Alternates', sans-serif;">ColStats</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-cogs"></i> About ColStooy <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-cogs"></i> About ColStats <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                       <li><a href="index.html">Presentation</a>
-                                        </li>
+                                      
                                         
-                                        <li><a href="colstooy.php">ColStooy Section</a>
+                                        <li><a href="colstats.php">Dashboard Section</a>
                                         </li>
-										<li><a href="#">Special Statistics</a>
-                                        </li>
+										
 																			
                                         
                                     </ul>

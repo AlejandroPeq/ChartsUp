@@ -49,9 +49,9 @@
     <!-- Custom styling plus plugins -->
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/icheck/flat/green.css" rel="stylesheet">
-
+<link rel="icon" href="images/logoTFG.png">
 	<style>
-	h2,h3, #userName{
+	h1, h2,h3, #userName{
 	
 		font-family: 'Montserrat Alternates', sans-serif;
 	}
@@ -105,374 +105,19 @@
 							
 
 								<div class="x_title">
-                                    <h2>Compare Section<small>Compare and look into the information</small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
+                                    
+                                     
                                 </div>
                                 <div class="x_content">
+								
+								 <div class="x_content" style="background-image:url(images/colstooyHeader.jpg); height:140px;">
+										<h1 style="color:white; position:relative;   left: 4%; top: 30%;">Comparator</h1>
+										<h3 style="font-size:14px; color:white; position:relative;   left: 5%; top: 35%;">Would you like to compare any wiki ?</h3>
+									</div>
+                                    <div class="clearfix"></div>
 
 
-                                    <!-- Smart Wizard -->
                                     
-                                    <div id="wizard" class="form_wizard wizard_horizontal">
-                                        <ul class="wizard_steps">
-                                            <li>
-                                                <a href="#step-1" style="    text-decoration: none;">
-                                                    <span class="step_no">1</span>
-                                                    <span class="step_descr">
-                                            Ranking<br />
-                                            <small>Top Four</small>
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-2" style="    text-decoration: none;">
-                                                    <span class="step_no">2</span>
-                                                    <span class="step_descr">
-                                            Details<br />
-                                            <small>Complete info</small>
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-3" style="    text-decoration: none;">
-                                                    <span class="step_no">3</span>
-                                                    <span class="step_descr">
-                                            Step 3<br />
-                                            <small>Third Steps</small>
-                                        </span>
-                                                </a>
-                                            </li>
-                                            
-											
-                                        </ul>
-                                        <div id="step-1" style="overflow-x: initial;">
-                                            
-											
-											<div class="row">
-											
-												<div class="col-md-12">
-
-												
-													<?php
-													
-													//Comparaciones
-	  
-													  $queryComparaciones = 'SELECT *
-																FROM comparaciones ORDER BY cantidad DESC Limit 4';
-													  
-																		
-													  if( !$resultComparaciones = $db->query($queryComparaciones) ){
-														die('There was an error running the query [' . $db->error . ']');
-													  }
-
-													  $num_results2 = $resultComparaciones->num_rows;
-													  
-													  for ($k=1; $k<= $num_results2; $k++){
-														$rowComparaciones = $resultComparaciones->fetch_object();
-									
-													echo'
-													
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing">
-															<div class="title" style="background-image:url(images/backgroundCompare.jpg);">
-																<div class="avatar-view" style=" margin-left: auto;margin-right: auto; width: 102px;border-radius: 50%;height: auto;" title="Change the avatar">
-																	<img src="images/compare'.$k.'.jpg" alt="Avatar">
-																</div>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left" style="text-align: center;">
-																			
-																			<div class="tile-stats">
-																				
-																				<div style="font-size:25px; font-family: Orbitron", sans-serif;" class="count"> '.$rowComparaciones->cantidad.'</div>
-
-																				<h3>'.$rowComparaciones->nombre_wiki.'</h3>
-																				<p>Amount being First Choice.</p>
-																			</div>
-																			
-																			
-																		</ul>
-																	</div>
-																</div>
-																
-															</div>
-														</div>
-													</div> ';  
-													  }
-													?>
-													
-												</div>
-											
-											</div>
-											
-
-                                        </div>
-                                        <div id="step-2">
-                                            
-											<div class="row">
-											
-												<div class="col-md-12">
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing">
-															<div class="title"  style="background-image:url(http://images.all-free-download.com/images/graphiclarge/abstract_wave_design_vector_background_art_148768.jpg)">
-																<h2>Tally Box Design</h2>
-																<h1>free</h1>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing ui-ribbon-container">
-															<div class="ui-ribbon-wrapper">
-																<div class="ui-ribbon">
-																	30% Off
-																</div>
-															</div>
-															<div class="title">
-																<h2>Tally Box Design</h2>
-																<h1>$25</h1>
-																<span>Monthly</span>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing">
-															<div class="title">
-																<h2>Tally Box Design</h2>
-																<h1>$25</h1>
-																<span>Monthly</span>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing">
-															<div class="title">
-																<h2>Tally Box Design</h2>
-																<h1>$25</h1>
-																<span>Monthly</span>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-												</div>
-											
-											</div>
-                                
-                                        </div>
-                                        <div id="step-3">
-                                            <div class="row">
-											
-												<div class="col-md-12">
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing">
-															<div class="title">
-																<h2>Tally Box Design</h2>
-																<h1>free</h1>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing ui-ribbon-container">
-															<div class="ui-ribbon-wrapper">
-																<div class="ui-ribbon">
-																	30% Off
-																</div>
-															</div>
-															<div class="title">
-																<h2>Tally Box Design</h2>
-																<h1>$25</h1>
-																<span>Monthly</span>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing">
-															<div class="title">
-																<h2>Tally Box Design</h2>
-																<h1>$25</h1>
-																<span>Monthly</span>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-
-													<!-- price element -->
-													<div class="col-md-3 col-sm-6 col-xs-12">
-														<div class="pricing">
-															<div class="title">
-																<h2>Tally Box Design</h2>
-																<h1>$25</h1>
-																<span>Monthly</span>
-															</div>
-															<div class="x_content">
-																<div class="">
-																	<div class="pricing_features">
-																		<ul class="list-unstyled text-left">
-																			
-																			
-																			<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
-																			<li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="pricing_footer">
-																	<!--<a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>-->
-																	 
-																</div>
-															</div>
-														</div>
-													</div>   
-													<!-- price element -->
-												</div>
-											
-											</div>
-                                        </div>
-                                        
-
-                                    </div>
-                                    <!-- End SmartWizard Content -->
 
 
 
@@ -613,6 +258,87 @@
                             </div>
 							
 							
+							
+							<!-- Smart Wizard -->
+                                    
+                                    <div class="x_panel">
+                                       <div class="x_title">
+                                    <h2>Top 4 Wiki Selections <small>Wich are the top 4 selections until now?</small></h2>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                                        <div id="step-1" style="overflow-x: initial;">
+                                            
+											
+											<div class="row">
+											
+												<div class="col-md-12">
+
+												
+													<?php
+													
+													//Comparaciones
+	  
+													  $queryComparaciones = 'SELECT *
+																FROM comparaciones ORDER BY cantidad DESC Limit 4';
+													  
+																		
+													  if( !$resultComparaciones = $db->query($queryComparaciones) ){
+														die('There was an error running the query [' . $db->error . ']');
+													  }
+
+													  $num_results2 = $resultComparaciones->num_rows;
+													  
+													  for ($k=1; $k<= $num_results2; $k++){
+														$rowComparaciones = $resultComparaciones->fetch_object();
+									
+													echo'
+													
+													<div class="col-md-3 col-sm-6 col-xs-12">
+														<div class="pricing">
+															<div class="title" style="background-image:url(images/backgroundCompare.jpg);">
+																<div class="avatar-view" style=" margin-left: auto;margin-right: auto; width: 102px;border-radius: 50%;height: auto;" title="Change the avatar">
+																	<img src="images/compare'.$k.'.jpg" alt="Avatar">
+																</div>
+															</div>
+															<div class="x_content">
+																<div class="">
+																	<div class="pricing_features">
+																		<ul class="list-unstyled text-left" style="text-align: center;">
+																			
+																			<div class="tile-stats">
+																				
+																				<div style="font-size:25px; font-family: Orbitron", sans-serif;" class="count"> '.$rowComparaciones->cantidad.'</div>
+
+																				<h3>'.$rowComparaciones->nombre_wiki.'</h3>
+																				<p>Amount being First Choice.</p>
+																			</div>
+																			
+																			
+																		</ul>
+																	</div>
+																</div>
+																
+															</div>
+														</div>
+													</div> ';  
+													  }
+													?>
+													
+												</div>
+											
+											</div>
+											
+
+                                        </div>
+                                        
+                                        
+                                        
+
+                                    </div>
+                                    <!-- End SmartWizard Content -->
+							
+							
                 
                 <!-- footer content -->
 					<?php
@@ -640,34 +366,7 @@
     <script type="text/javascript" src="js/notify/pnotify.buttons.js"></script>
     <script type="text/javascript" src="js/notify/pnotify.nonblock.js"></script>
 
-    
-
-	<script type="text/javascript">
-        var permanotice, tooltip, _alert;
-        $(function () {
-            new PNotify({
-                title: "Notificación Emergente",
-                type: "dark",
-                text: "Bienvenido a la zona comparador, analiza hasta 4 wikis de tu elección.",
-                nonblock: {
-                    nonblock: false
-                },
-                before_close: function (PNotify) {
-                    // You can access the notice's options with this. It is read only.
-                    //PNotify.options.text;
-
-                    // You can change the notice's options after the timer like this:
-                    PNotify.update({
-                        title: PNotify.options.title + " - Enjoy your Stay",
-                        before_close: null
-                    });
-                    PNotify.queueRemove();
-                    return false;
-                }
-            });
-
-        });
-    </script>
+ 
 	
 	
     <!-- chart js -->
