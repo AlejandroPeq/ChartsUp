@@ -1838,6 +1838,18 @@ $db->query($queryUpadateComparaciones4);
 													?>
 													</tbody>
 												</table>
+												
+												<?php
+													
+														if ($num_resultslistaLideres2 == 0){
+														echo'<div class="bs-example" data-example-id="simple-jumbotron">
+															<div class="jumbotron">
+																<h1>No leaderboard!</h1>
+																<p>Not all wikis have set up the leaderboard , the scoring system and rewards for achievement. This is one of them.</p>
+															</div>
+														</div>';
+														}
+													?>
 
 												</div>
 											</div>
@@ -1916,6 +1928,18 @@ $db->query($queryUpadateComparaciones4);
 													?>
 													</tbody>
 												</table>
+												
+												<?php
+													
+														if ($num_resultslistaLideres3 == 0){
+														echo'<div class="bs-example" data-example-id="simple-jumbotron">
+															<div class="jumbotron">
+																<h1>No leaderboard!</h1>
+																<p>Not all wikis have set up the leaderboard , the scoring system and rewards for achievement. This is one of them.</p>
+															</div>
+														</div>';
+														}
+													?>
 
 												</div>
 											</div>
@@ -1993,6 +2017,18 @@ $db->query($queryUpadateComparaciones4);
 													?>
 													</tbody>
 												</table>
+												
+												<?php
+													
+														if ($num_resultslistaLideres4 == 0){
+														echo'<div class="bs-example" data-example-id="simple-jumbotron">
+															<div class="jumbotron">
+																<h1>No leaderboard!</h1>
+																<p>Not all wikis have set up the leaderboard , the scoring system and rewards for achievement. This is one of them.</p>
+															</div>
+														</div>';
+														}
+													?>
 
 												</div>
 											</div>
