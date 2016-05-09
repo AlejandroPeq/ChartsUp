@@ -791,7 +791,7 @@ $db->query($queryUpadateComparaciones4);
     <link href="css/icheck/flat/green.css" rel="stylesheet">
 
 	<style>
-	h2,h3, #userName{
+	h1,h2,h3, #userName{
 	
 		font-family: 'Montserrat Alternates', sans-serif;
 	}
@@ -1002,31 +1002,165 @@ $db->query($queryUpadateComparaciones4);
 									</div>
                                 </div>
 							
-                                <div class="x_title">
-                                    <h2>General Statistics</h2>
-                                    
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-									
-									<?php
-									
-									if ($contador ==4)
-										echo'<div id="echart_bar_horizontal" style="height:370px;"></div>';
-									
-									if ($contador ==3)
-										echo'<div id="echart_bar_horizontal2" style="height:370px;"></div>';
-
-									if ($contador ==2)
-										echo'<div id="echart_bar_horizontal3" style="height:370px;"></div>';
-
-									
-									?>
-									
-                                </div>
+                             
 								
 								
                             </div>
+							
+							
+							<div style=" padding-left: 0px;" class="col-md-12 col-sm-12 col-xs-12">
+								<div class="x_panel">
+											<div class="x_title">
+												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
+												
+												<div class="clearfix"></div>
+											</div>
+											<div class="x_content">
+											
+												<?php
+									
+												if ($contador ==4)
+													echo'<div id="echart_bar_horizontal4" style="height:350px;"></div>';
+												
+												if ($contador ==3)
+													echo'<div id="echart_bar_horizontal5" style="height:350px;"></div>';
+
+												if ($contador ==2)
+													echo'<div id="echart_bar_horizontal6" style="height:350px;"></div>';
+
+												
+												?>
+
+												
+
+											</div>
+										</div>
+							
+							</div>
+							
+							<div style="padding-right: 0px; padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
+								<div class="x_panel">
+											<div class="x_title">
+												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
+												
+												<div class="clearfix"></div>
+											</div>
+											<div class="x_content">
+											
+												<?php
+									
+												if ($contador ==4)
+													echo'<div id="echart_bar_horizontal7" style="height:350px;"></div>';
+												
+												if ($contador ==3)
+													echo'<div id="echart_bar_horizontal8" style="height:350px;"></div>';
+
+												if ($contador ==2)
+													echo'<div id="echart_bar_horizontal9" style="height:350px;"></div>';
+												
+												?>
+
+												
+
+											</div>
+										</div>
+							
+							</div>
+							
+							
+							<div style=" padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
+								<div class="x_panel">
+											<div class="x_title">
+												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
+												
+												<div class="clearfix"></div>
+											</div>
+											<div class="x_content">
+											
+												<?php
+									
+												if ($contador ==4)
+													echo'<div id="echart_bar_horizontalEdiciones4" style="height:350px;"></div>';
+												
+												if ($contador ==3)
+													echo'<div id="echart_bar_horizontalEdiciones3" style="height:350px;"></div>';
+
+												if ($contador ==2)
+													echo'<div id="echart_bar_horizontalEdiciones2" style="height:350px;"></div>';
+												
+												?>
+
+												
+
+											</div>
+										</div>
+							
+							</div>
+							
+							
+							<div style=" padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
+								<div class="x_panel">
+											<div class="x_title">
+												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
+												
+												<div class="clearfix"></div>
+											</div>
+											<div class="x_content">
+											
+												<?php
+									
+												if ($contador ==4)
+													echo'<div id="echart_bar_horizontalMediaEdiciones4" style="height:350px;"></div>';
+												
+												if ($contador ==3)
+													echo'<div id="echart_bar_horizontalMediaEdiciones3" style="height:350px;"></div>';
+
+												if ($contador ==2)
+													echo'<div id="echart_bar_horizontalMediaEdiciones2" style="height:350px;"></div>';
+												
+												?>
+
+												
+
+											</div>
+										</div>
+							
+							</div>
+							
+							<div style="padding-right: 0px; padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
+								<div class="x_panel">
+											<div class="x_title">
+												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
+												
+												<div class="clearfix"></div>
+											</div>
+											<div class="x_content">
+											
+												<?php
+									
+												if ($contador ==4)
+													echo'<div id="echart_bar_horizontalFicheros4" style="height:350px;"></div>';
+												
+												if ($contador ==3)
+													echo'<div id="echart_bar_horizontalFicheros3" style="height:350px;"></div>';
+
+												if ($contador ==2)
+													echo'<div id="echart_bar_horizontalFicheros2" style="height:350px;"></div>';
+												
+												?>
+
+												
+
+											</div>
+										</div>
+							
+							</div>
+							
+							
+						
+							
+							
+							
 							
 							
 							<div style="    padding-right: 0px; padding-left: 0px;" class="col-md-5 col-sm-5 col-xs-12">
@@ -1571,6 +1705,7 @@ $db->query($queryUpadateComparaciones4);
                                                 <div class="x_content">
 											    
 												<table class="table table-striped table-bordered">
+						
 													<thead>
 														<tr>															
 															<th>#</th>
@@ -1610,9 +1745,25 @@ $db->query($queryUpadateComparaciones4);
 													?>
 													</tbody>
 												</table>
+												
+												<?php
+													
+														if ($num_resultslistaLideres == 0){
+														echo'<div class="bs-example" data-example-id="simple-jumbotron">
+															<div class="jumbotron">
+																<h1>No leaderboard!</h1>
+																<p>Not all wikis have set up the leaderboard , the scoring system and rewards for achievement. This is one of them.</p>
+															</div>
+														</div>';
+														}
+													?>
 
 												</div>
 											</div>
+											
+											
+											
+											
 											
 											<?php
 											
@@ -1911,27 +2062,31 @@ $db->query($queryUpadateComparaciones4);
     <script src="js/echart/echarts-all.js"></script>
     <script src="js/echart/green.js"></script>
 
-	<script>
+	
+		
+		<!-- Update -->
+		
+			<script>
 		
 		
-		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontal'), theme);
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontal4'), theme);
         myChart9.setOption({
                  title : {
-        text: 'Compare Graph',
-        subtext: 'General Characteristics'
+        text: 'Total Pages',
+        subtext: 'Compare Statistics'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['<?php echo ''.$rowWiki1->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki4->nombre_wiki.''; ?>']
+        data:['Paginas']
     },
     toolbox: {
         show : true,
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
-            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            magicType : {show: true, type: ['line', 'bar']},
             restore : {show: true},
             saveAsImage : {show: true}
         }
@@ -1941,7 +2096,79 @@ $db->query($queryUpadateComparaciones4);
         {
             type : 'category',
             boundaryGap : false,
-            data : ['Contenido','Ficheros','Ediciones','Páginas']
+            data : ['<?php echo ''.$rowWiki4->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+			
+        }
+    ],
+    series : [
+        {
+            name:'Paginas',
+            type:'line',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki4->paginas.''; ?>,<?php echo ''.$rowWiki3->paginas.''; ?>,<?php echo ''.$rowWiki2->paginas.''; ?>,<?php echo ''.$rowWiki1->paginas.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontal5'), theme);
+        myChart9.setOption({
+                 title : {
+         text: 'Total Pages',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Paginas']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
     yAxis : [
@@ -1951,32 +2178,385 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'<?php echo ''.$rowWiki4->nombre_wiki.''; ?>',
+            name:'Paginas',
             type:'line',
             smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$rowWiki4->paginas_contenido.''; ?>, <?php echo ''.$rowWiki4->ficheros_subidos.''; ?>, <?php echo ''.$rowWiki4->ediciones_paginas.''; ?>, <?php echo ''.$rowWiki4->paginas.''; ?>]
-        },
-		{
-            name:'<?php echo ''.$rowWiki3->nombre_wiki.''; ?>',
-            type:'line',
-            smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$rowWiki3->paginas_contenido.''; ?>, <?php echo ''.$rowWiki3->ficheros_subidos.''; ?>, <?php echo ''.$rowWiki3->ediciones_paginas.''; ?>, <?php echo ''.$rowWiki3->paginas.''; ?>]
-        },
+           itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki3->paginas.''; ?>,<?php echo ''.$rowWiki2->paginas.''; ?>,<?php echo ''.$rowWiki1->paginas.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontal6'), theme);
+        myChart9.setOption({
+                 title : {
+         text: 'Total Pages',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Paginas']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
         {
-            name:'<?php echo ''.$rowWiki2->nombre_wiki.''; ?>',
-            type:'line',
-            smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$rowWiki2->paginas_contenido.''; ?>, <?php echo ''.$rowWiki2->ficheros_subidos.''; ?>, <?php echo ''.$rowWiki2->ediciones_paginas.''; ?>, <?php echo ''.$rowWiki2->paginas.''; ?>]
-        },
+            type : 'category',
+            boundaryGap : false,
+            data : ['<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
         {
-            name:'<?php echo ''.$rowWiki1->nombre_wiki.''; ?>',
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Paginas',
             type:'line',
             smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$rowWiki1->paginas_contenido.''; ?>, <?php echo ''.$rowWiki1->ficheros_subidos.''; ?>, <?php echo ''.$rowWiki1->ediciones_paginas.''; ?>, <?php echo ''.$rowWiki1->paginas.''; ?>]
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki2->paginas.''; ?>,<?php echo ''.$rowWiki1->paginas.''; ?>]
+        }
+    ]
+        });
+		
+			   
+	   
+    </script>
+	
+	
+	
+	<!-- Update -->
+		
+			<script>
+		
+		
+		var myChartRegistrados = echarts.init(document.getElementById('echart_bar_horizontal7'), theme);
+        myChartRegistrados.setOption({
+                 title : {
+        text: 'Total Register Users',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Registrados']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki4->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+			
+        }
+    ],
+    series : [
+        {
+            name:'Registrados',
+            type:'bar',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki4->usuarios_registrados.''; ?>,<?php echo ''.$rowWiki3->usuarios_registrados.''; ?>,<?php echo ''.$rowWiki2->usuarios_registrados.''; ?>,<?php echo ''.$rowWiki1->usuarios_registrados.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	<script>
+		
+		
+		var myChartRegistrados = echarts.init(document.getElementById('echart_bar_horizontal8'), theme);
+        myChartRegistrados.setOption({
+                 title : {
+       text: 'Total Register Users',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Registrados']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Registrados',
+            type:'bar',
+            smooth:true,
+           itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki3->usuarios_registrados.''; ?>,<?php echo ''.$rowWiki2->usuarios_registrados.''; ?>,<?php echo ''.$rowWiki1->usuarios_registrados.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	<script>
+		
+		
+		var myChartRegistrados = echarts.init(document.getElementById('echart_bar_horizontal9'), theme);
+        myChartRegistrados.setOption({
+                 title : {
+        text: 'Total Register Users',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Registrados']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Registrados',
+            type:'bar',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki2->usuarios_registrados.''; ?>,<?php echo ''.$rowWiki1->usuarios_registrados.''; ?>]
+        }
+    ]
+        });
+		
+			   
+	   
+    </script>
+	
+	
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalEdiciones4'), theme);
+        myChart9.setOption({
+                 title : {
+       text: 'Total Editions',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Ediciones']
+    },
+    toolbox: {
+        show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki4->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Ediciones',
+            type:'bar',
+            smooth:true,
+           itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki4->ediciones_paginas.''; ?>,<?php echo ''.$rowWiki3->ediciones_paginas.''; ?>,<?php echo ''.$rowWiki2->ediciones_paginas.''; ?>,<?php echo ''.$rowWiki1->ediciones_paginas.''; ?>]
         }
     ]
         });
@@ -1989,26 +2569,31 @@ $db->query($queryUpadateComparaciones4);
     </script>
 	
 	
-    <script>
-        
-		var myChart8 = echarts.init(document.getElementById('echart_bar_horizontal2'), theme);
-        myChart8.setOption({
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalEdiciones3'), theme);
+        myChart9.setOption({
                  title : {
-        text: 'Compare Graph',
-        subtext: 'General Characteristics'
+       text: 'Total Editions',
+        subtext: 'Compare Statistics'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['<?php echo ''.$variable1->nombre_wiki.''; ?>','<?php echo ''.$variable2->nombre_wiki.''; ?>','<?php echo ''.$variable3->nombre_wiki.''; ?>']
+        data:['Ediciones']
     },
     toolbox: {
         show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
-            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            magicType : {show: true, type: ['line', 'bar']},
             restore : {show: true},
             saveAsImage : {show: true}
         }
@@ -2017,8 +2602,8 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
-            data : ['Contenido','Ficheros','Ediciones','Páginas']
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
     yAxis : [
@@ -2028,53 +2613,136 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'<?php echo ''.$variable3->nombre_wiki.''; ?>',
-            type:'line',
+            name:'Ediciones',
+            type:'bar',
             smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$variable3->paginas_contenido.''; ?>, <?php echo ''.$variable3->ficheros_subidos.''; ?>, <?php echo ''.$variable3->ediciones_paginas.''; ?>, <?php echo ''.$variable3->paginas.''; ?>]
-        },
-		{
-            name:'<?php echo ''.$variable2->nombre_wiki.''; ?>',
-            type:'line',
-            smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$variable2->paginas_contenido.''; ?>, <?php echo ''.$variable2->ficheros_subidos.''; ?>, <?php echo ''.$variable2->ediciones_paginas.''; ?>, <?php echo ''.$variable2->paginas.''; ?>]
-        },
-        {
-            name:'<?php echo ''.$variable1->nombre_wiki.''; ?>',
-            type:'line',
-            smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$variable1->paginas_contenido.''; ?>, <?php echo ''.$variable1->ficheros_subidos.''; ?>, <?php echo ''.$variable1->ediciones_paginas.''; ?>, <?php echo ''.$variable1->paginas.''; ?>]
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki3->ediciones_paginas.''; ?>,<?php echo ''.$rowWiki2->ediciones_paginas.''; ?>,<?php echo ''.$rowWiki1->ediciones_paginas.''; ?>]
         }
-        
     ]
         });
+		
+		
+		
 
-		</script>
+	   
+	   
+    </script>
+	
+	<script>
 		
 		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalEdiciones2'), theme);
+        myChart9.setOption({
+                 title : {
+        text: 'Total Editions',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Ediciones']
+    },
+    toolbox: {
+        show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Ediciones',
+            type:'bar',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki2->ediciones_paginas.''; ?>,<?php echo ''.$rowWiki1->ediciones_paginas.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	
 		<script>
-        
-		var myChart7 = echarts.init(document.getElementById('echart_bar_horizontal3'), theme);
-        myChart7.setOption({
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalFicheros4'), theme);
+        myChart9.setOption({
                  title : {
-        text: 'Compare Graph',
-        subtext: 'General Characteristics'
+        text: 'Upload Files',
+        subtext: 'Compare Statistics'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['<?php echo ''.$variable21->nombre_wiki.''; ?>','<?php echo ''.$variable22->nombre_wiki.''; ?>']
+        data:['Ficheros']
     },
     toolbox: {
         show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
-            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            magicType : {show: true, type: ['line', 'bar']},
             restore : {show: true},
             saveAsImage : {show: true}
         }
@@ -2083,8 +2751,8 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
-            data : ['Contenido','Ficheros','Ediciones','Páginas']
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki4->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
     yAxis : [
@@ -2094,24 +2762,421 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'<?php echo ''.$variable22->nombre_wiki.''; ?>',
-            type:'line',
+            name:'Ficheros',
+            type:'bar',
             smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$variable22->paginas_contenido.''; ?>, <?php echo ''.$variable22->ficheros_subidos.''; ?>, <?php echo ''.$variable22->ediciones_paginas.''; ?>, <?php echo ''.$variable22->paginas.''; ?>]
-        },
-		{
-            name:'<?php echo ''.$variable21->nombre_wiki.''; ?>',
-            type:'line',
-            smooth:true,
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data:[<?php echo ''.$variable21->paginas_contenido.''; ?>, <?php echo ''.$variable21->ficheros_subidos.''; ?>, <?php echo ''.$variable21->ediciones_paginas.''; ?>, <?php echo ''.$variable21->paginas.''; ?>]
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki4->ficheros_subidos.''; ?>,<?php echo ''.$rowWiki3->ficheros_subidos.''; ?>,<?php echo ''.$rowWiki2->ficheros_subidos.''; ?>,<?php echo ''.$rowWiki1->ficheros_subidos.''; ?>]
         }
-        
     ]
         });
+		
+		
+		
 
-		</script>
+	   
+	   
+    </script>
+	
+	
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalFicheros3'), theme);
+        myChart9.setOption({
+                 title : {
+         text: 'Upload Files',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Ficheros']
+    },
+    toolbox: {
+        show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Ficheros',
+            type:'bar',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki3->ficheros_subidos.''; ?>,<?php echo ''.$rowWiki2->ficheros_subidos.''; ?>,<?php echo ''.$rowWiki1->ficheros_subidos.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalFicheros2'), theme);
+        myChart9.setOption({
+                 title : {
+        text: 'Upload Files',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Ficheros']
+    },
+    toolbox: {
+        show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Ficheros',
+            type:'bar',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki2->ficheros_subidos.''; ?>,<?php echo ''.$rowWiki1->ficheros_subidos.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalMediaEdiciones4'), theme);
+        myChart9.setOption({
+                 title : {
+        text: 'Average Editions',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Media Ediciones']
+    },
+    toolbox: {
+        show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['<?php echo ''.$rowWiki4->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Media Ediciones',
+            type:'line',
+            
+			itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+			
+            
+            data:[<?php echo ''.$rowWiki4->media_ediciones.''; ?>,<?php echo ''.$rowWiki3->media_ediciones.''; ?>,<?php echo ''.$rowWiki2->media_ediciones.''; ?>,<?php echo ''.$rowWiki1->media_ediciones.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalMediaEdiciones3'), theme);
+        myChart9.setOption({
+                 title : {
+       text: 'Average Editions',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Media Ediciones']
+    },
+    toolbox: {
+        show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Media Ediciones',
+            type:'line',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki3->media_ediciones.''; ?>,<?php echo ''.$rowWiki2->media_ediciones.''; ?>,<?php echo ''.$rowWiki1->media_ediciones.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+	
+	<script>
+		
+		
+		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalMediaEdiciones2'), theme);
+        myChart9.setOption({
+                 title : {
+       text: 'Average Editions',
+        subtext: 'Compare Statistics'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Media Ediciones']
+    },
+    toolbox: {
+        show : true,
+		 orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'Media Ediciones',
+            type:'line',
+            smooth:true,
+            itemStyle: {
+                normal: {
+					areaStyle: {type: 'default'},
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        return colorList[params.dataIndex]
+                    },
+					 label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}'
+                    }
+                    
+                }
+            },
+            data:[<?php echo ''.$rowWiki2->media_ediciones.''; ?>,<?php echo ''.$rowWiki1->media_ediciones.''; ?>]
+        }
+    ]
+        });
+		
+		
+		
+
+	   
+	   
+    </script>
+		
+		
+		
+		<!-- End Update -->
+		
+		
+		
 		
 		
 		<script>
@@ -2159,19 +3224,19 @@ var myChart6 = echarts.init(document.getElementById('usersGraph1'), theme);
         {
             name:'<?php echo ''.$rowWikiUsers4->nombre_wiki.''; ?>',
             type:'bar',
-			stack: 'apilado',
+			
             data:[<?php echo ''.$rowWikiUsers4->usuarios_activos.''; ?>, <?php echo ''.$rowWikiUsers4->usuarios_administradores.''; ?>, <?php echo ''.$rowWikiUsers4->usuarios_burocratas.''; ?>, <?php echo ''.$rowWikiUsers4->usuarios_reversores.''; ?>]
         },
         {
             name:'<?php echo ''.$rowWiki3->nombre_wiki.''; ?>',
             type:'bar',
-            stack: 'apilado',
+            
             data:[<?php echo ''.$rowWikiUsers3->usuarios_activos.''; ?>, <?php echo ''.$rowWikiUsers3->usuarios_administradores.''; ?>, <?php echo ''.$rowWikiUsers3->usuarios_burocratas.''; ?>, <?php echo ''.$rowWikiUsers3->usuarios_reversores.''; ?>]
         },
         {
             name:'<?php echo ''.$rowWikiUsers2->nombre_wiki.''; ?>',
             type:'bar',
-            stack: 'apilado',
+           
             data:[<?php echo ''.$rowWikiUsers2->usuarios_activos.''; ?>, <?php echo ''.$rowWikiUsers2->usuarios_administradores.''; ?>, <?php echo ''.$rowWikiUsers2->usuarios_burocratas.''; ?>, <?php echo ''.$rowWikiUsers2->usuarios_reversores.''; ?>]
         },
         {
@@ -2242,13 +3307,13 @@ var myChart5 = echarts.init(document.getElementById('usersGraph2'), theme);
         {
             name:'<?php echo ''.$variableUsers3->nombre_wiki.''; ?>',
             type:'bar',
-			stack: 'apilado',
+			
             data:[<?php echo ''.$variableUsers3->usuarios_activos.''; ?>, <?php echo ''.$variableUsers3->usuarios_administradores.''; ?>, <?php echo ''.$variableUsers3->usuarios_burocratas.''; ?>, <?php echo ''.$variableUsers3->usuarios_reversores.''; ?>]
         },
         {
             name:'<?php echo ''.$variableUsers2->nombre_wiki.''; ?>',
             type:'bar',
-            stack: 'apilado',
+            
             data:[<?php echo ''.$variableUsers2->usuarios_activos.''; ?>, <?php echo ''.$variableUsers2->usuarios_administradores.''; ?>, <?php echo ''.$variableUsers2->usuarios_burocratas.''; ?>, <?php echo ''.$variableUsers2->usuarios_reversores.''; ?>]
         },
         {
@@ -2308,7 +3373,7 @@ var myChart4 = echarts.init(document.getElementById('usersGraph3'), theme);
         {
             name:'<?php echo ''.$variableUsers22->nombre_wiki.''; ?>',
             type:'bar',
-			stack: 'apilado',
+			
             data:[<?php echo ''.$variableUsers22->usuarios_activos.''; ?>, <?php echo ''.$variableUsers22->usuarios_administradores.''; ?>, <?php echo ''.$variableUsers22->usuarios_burocratas.''; ?>, <?php echo ''.$variableUsers22->usuarios_reversores.''; ?>]
         },
         {
