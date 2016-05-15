@@ -72,8 +72,15 @@
                                 </li>
                                 <li><a><i class="fa fa-bar-chart-o"></i> Wikis Statistics <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="#">First Global Pannel</a>
-                                        </li>
+                                        <li><a href="TOPAdministradores.php">Top Administrators</a></li>
+										<li><a href="TOPArchivos.php">Top Upload Files</a></li>
+										<li><a href="TOPBurocratas.php">Top Burocratar Users</a></li>
+										<li><a href="TOPEdiciones.php">Top Editions</a></li>
+										<li><a href="TOPMediaEdiciones.php">Top Average Editions</a></li>
+										<li><a href="TOPReversores.php">Top Rollback Users</a></li>
+										<li><a href="TOPPaginas.php">Top Pages</a></li>
+										<li><a href="TOPUsuariosActivos.php">Top Active Users</a></li>
+										<li><a href="WikisScatterCustomizable.php">Customizable Scatter</a></li>
                                        
                                         
                                     </ul>
