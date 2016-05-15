@@ -147,7 +147,7 @@
 												 </div>
 												
 												<h3 style="margin-top:20px;margin-left:100px; font-size: 15px;color: #34495E;" ><i class="fa fa-cube"></i> <?php  echo''.$nombreUsuario.''; ?></h3>
-													<p style="margin-left:100px; ">Lorem ipsum psdea itgum rixt.</p>
+													<p style="margin-left:100px; "></p>
 											</div>
 										</div>
 										<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -200,7 +200,7 @@
 													</div>
 									</div>
 			
-                                    <div style="padding-right: 0px; padding-left: 0px;" class="col-md-4 col-sm-4 col-xs-12 profile_left">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 profile_left">
 										
 										<div class="x_panel">
 											<div class="x_title">
@@ -214,7 +214,8 @@
 
 											</div>
 										</div>
-
+										</div>
+									<div class="col-md-6 col-sm-6 col-xs-12 profile_left">
 										<div class="x_panel">
 											<div class="x_title">
 												<h2><i class="fa fa-bars"></i> User Participation <small>porcent in each wiki</small></h2>
@@ -232,7 +233,7 @@
 										
 
                                     </div>
-                                    <div class="col-md-8 col-sm-8 col-xs-12" style="padding-right: 0px;">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
 
                                         
 										<div class="x_panel">		
@@ -257,7 +258,7 @@
                                                   
 												
 												
-												<div class="row">
+												
 
 														<div class="col-md-12 col-sm-12 col-xs-12">
 															<div class="x_panel">
@@ -330,7 +331,7 @@
 														<br/>
 														<br/>
 
-													</div>
+												
 												
 
                                                 </div>
@@ -447,9 +448,9 @@
 																						</p>
 																					</div>
 																					<div class="col-xs-12 col-sm-6 emphasis">
-																						<button type="button" class="btn btn-success btn-xs"><i class="fa fa-comments-o"></i> Globals</button>
+																						<!--<button type="button" class="btn btn-success btn-xs"><i class="fa fa-comments-o"></i> Globals</button>-->
 																						<a href="fichaWiki.php?id='.$rowLogros->id_wiki.'" ><button  type="button" class="btn btn-primary btn-xs"> <i class="fa fa-user">
-																							</i> Wiki</button></a>
+																							</i> Acess to Wiki</button></a>
 																					</div>
 																				</div>
 																			</div>
@@ -706,14 +707,14 @@
     legend: {
 		x: 'center',
         y: 'bottom',
-        data:['Ediciones Usuario']		
+        data:['Editions']		
     },
     toolbox: {
         show : true,
         feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
-            magicType : {show: true, type: ['line', 'bar']},
+           // mark : {show: true},
+           // dataView : {show: true, readOnly: false},
+            //magicType : {show: true, type: ['line', 'bar']},
             restore : {show: true},
             saveAsImage : {show: true}
         }
@@ -727,7 +728,7 @@
 			<?php
 			
 			 $query = 'SELECT *
-					FROM aportaciones where aportaciones.nombre_usuario = "'.$nombreUsuario.'"';
+					FROM aportaciones where aportaciones.nombre_usuario = "'.$nombreUsuario.'" ORDER BY aportaciones.ediciones DESC ';
 					
 					 if( !$result1 = $db->query($query) ){
 			die('There was an error running the query [' . $db->error . ']');
@@ -770,7 +771,7 @@
 	
 	
 		{
-            name:'Ediciones Usuario',
+            name:'Editions',
             type:'bar',
             data:[
 			<?php
@@ -796,18 +797,18 @@
 			?>
 			
 			],
-            markPoint : {
-                data : [
-                    {type : 'max', name: 'Maximo'},
-                    {type : 'min', name: 'Minimo'}
-                ]
-            },
+            //markPoint : {
+             //   data : [
+             //       {type : 'max', name: 'Max'},
+            //        {type : 'min', name: 'Min'}
+            //    ]
+           // },
 			
-            markLine : {
-                data : [
-                    {type : 'average', name: 'Media' }
-                ]
-            }
+          //  markLine : {
+            //    data : [
+           //         {type : 'average', name: 'Media' }
+            //    ]
+          //  }
         }
 		
 	
@@ -831,7 +832,7 @@ var myChart = echarts.init(document.getElementById('echart_donut'), theme);
 				<?php
 			
 				 $query = 'SELECT *
-					FROM aportaciones where aportaciones.nombre_usuario = "'.$nombreUsuario.'" order by aportaciones.ediciones DESC LIMIT 8';
+					FROM aportaciones where aportaciones.nombre_usuario = "'.$nombreUsuario.'" order by aportaciones.ediciones DESC LIMIT 12';
 			
 				if( !$result5 = $db->query($query) ){
 				die('There was an error running the query [' . $db->error . ']');
@@ -850,15 +851,20 @@ var myChart = echarts.init(document.getElementById('echart_donut'), theme);
 
 				  $rowWiki = $resultWiki->fetch_object();
 				
-				if ($i != $num_resultsListado5)
+				//if ($i != $num_resultsListado5)
 				echo'"'.$rowWiki->nombre_wiki.'",';
-				else{
+				/*else{
 					echo'"';
 					echo''.$rowWiki->nombre_wiki.'';
 					echo'"';
-				}
+				}*/
 				
 			 }
+				echo "'Other Wikis'";
+			 
+
+			 
+			 
 			?>
 				
 				
@@ -868,7 +874,7 @@ var myChart = echarts.init(document.getElementById('echart_donut'), theme);
             toolbox: {
                 show: true,
                 feature: {
-                    magicType: {
+                   /* magicType: {
                         show: true,
                         type: ['pie', 'funnel'],
                         option: {
@@ -879,7 +885,7 @@ var myChart = echarts.init(document.getElementById('echart_donut'), theme);
                                 max: 5048
                             }
                         }
-                    },
+                    },*/
                     restore: {
                         show: true
                     },
@@ -923,10 +929,11 @@ var myChart = echarts.init(document.getElementById('echart_donut'), theme);
 			  }
 
 			  $num_resultsListado5 = $result5->num_rows;
-			
+			$restarTotal = 0;
 			 for( $i = 1; $i <= $num_resultsListado5; $i++ ){
 				$row5 = $result5->fetch_object();
 				
+
 				$queryWiki = 'SELECT * FROM wikis where wikis.id_wiki = "'.$row5->id_wiki.'"';
 				  
 				  if( !$resultWiki = $db->query($queryWiki) ){
@@ -934,13 +941,27 @@ var myChart = echarts.init(document.getElementById('echart_donut'), theme);
 				  }
 
 				  $rowWiki = $resultWiki->fetch_object();
-				
+				$restarTotal = $restarTotal + $row5->ediciones;
 				echo'{';
 				echo' value: '.$row5->ediciones.',
                             name: "'.$rowWiki->nombre_wiki.'" },';
 				
 				
 			 }
+			 
+			 $query4 =  'SELECT SUM(ediciones) as `asd` from `aportaciones` where aportaciones.nombre_usuario = "'.$nombreUsuario.'"';
+							
+						if( !$result4 = $db->query($query4) ){
+						die('There was an error running the query [' . $db->error . ']');
+					  }
+					  
+						 $row4 = $result4->fetch_object();
+						 $numeroExacto = $row4->asd - $restarTotal;
+						echo' {
+							 value: '.$numeroExacto.',
+							 name: "Other Wikis"
+						 },';
+			 
 			?>
    
                         
@@ -1054,42 +1075,36 @@ var myChart = echarts.init(document.getElementById('echart_donut'), theme);
     toolbox: {
         show : true,
         feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
+           // mark : {show: true},
+           // dataView : {show: true, readOnly: false},
             restore : {show: true},
             saveAsImage : {show: true}
         }
     },
-    polar : [
-       {
-           indicator : [
-               { text: '2016', max: <?php echo''.$contador2016.''; ?>},
-               { text: '2015', max: <?php echo''.$contador2015.''; ?>},
-               { text: '2014', max: <?php echo''.$contador2014.''; ?>},
-               { text: '2013', max: <?php echo''.$contador2013.''; ?>},
-               { text: '2012', max: <?php echo''.$contador2012.''; ?>},
-               { text: '2011', max: <?php echo''.$contador2011.''; ?>},
-			   { text: '2010', max: <?php echo''.$contador2010.''; ?>},
-			   { text: '2009', max: <?php echo''.$contador2009.''; ?>},	
-		       { text: '2008', max: <?php echo''.$contador2008.''; ?>},
-		       { text: '2007', max: <?php echo''.$contador2007.''; ?>}
-            ]
+	    xAxis : [
+        {
+            type : 'category',
+            data : ['2016','2015','2014','2013','2012','2011','2010','2009','2008','2007']
         }
     ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+	
     calculable : true,
     series : [
         {
-            name: 'Ediciones',
-            type: 'radar',
-            data : [
-                {
-                    value : [<?php echo''.$contador2016.''; ?>, <?php echo''.$contador2015.''; ?>, <?php echo''.$contador2014.''; ?>, <?php echo''.$contador2013.''; ?>, <?php echo''.$contador2012.''; ?>, <?php echo''.$contador2011.''; ?>, <?php echo''.$contador2010.''; ?>,<?php echo''.$contador2009.''; ?>, <?php echo''.$contador2008.''; ?>, <?php echo''.$contador2007.''; ?>],
-                    name : '<?php echo''.$row->nombre_usuario.''; ?>'
-                }
+            name: '<?php echo''.$row->nombre_usuario.''; ?>',
+            type: 'bar',
+            data : [<?php echo''.$contador2016.''; ?>, <?php echo''.$contador2015.''; ?>, <?php echo''.$contador2014.''; ?>, <?php echo''.$contador2013.''; ?>, <?php echo''.$contador2012.''; ?>, <?php echo''.$contador2011.''; ?>, <?php echo''.$contador2010.''; ?>,<?php echo''.$contador2009.''; ?>, <?php echo''.$contador2008.''; ?>, <?php echo''.$contador2007.''; ?>],
+               
+         }
                  
             ]
-        }
-    ]
+        
+    
 });
 </script>
 

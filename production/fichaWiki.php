@@ -19,12 +19,15 @@
 					
 		  //$query2 = 'SELECT * FROM wikis ORDER BY wikis.paginas_contenido DESC LIMIT 1';
 		  
-		  $query2 = 'SELECT * FROM wikis where wikis.paginas_contenido < 10000 and wikis.paginas_contenido > 5000';
+		  $query2 = 'Select AVG(prueba) as "resultado" from (Select wikis.paginas as "prueba" From Wikis order by wikis.paginas DESC Limit 50) q';
 		  
 		 
 		  
-		  $query3 = 'SELECT * FROM wikis where wikis.paginas_contenido < 1000 and wikis.paginas_contenido > 500';
+		  $query3 = 'Select AVG(prueba) as "resultado" from (Select wikis.ediciones_paginas as "prueba" From Wikis order by wikis.paginas DESC Limit 50) q';
 		  
+		  
+		  $queryMediaDeMedia = 'Select AVG(prueba) as "resultado" from (Select wikis.media_ediciones as "prueba" From Wikis order by wikis.paginas DESC Limit 50) q';
+
 		  
 		   $queryUsuarios = 'SELECT *
 					FROM aportaciones where aportaciones.id_wiki = "'.$idwiki.'"';
@@ -41,7 +44,9 @@
 		   if( !$result3 = $db->query($query3) ){
 			die('There was an error running the query [' . $db->error . ']');
 		  }
-		  
+		  		   if( !$resultqueryMediaDeMedia = $db->query($queryMediaDeMedia) ){
+			die('There was an error running the query [' . $db->error . ']');
+		  }
 		  
 		   if( !$resultUsuarios = $db->query($queryUsuarios) ){
 			die('There was an error running the query [' . $db->error . ']');
@@ -60,9 +65,10 @@
 		  
 		  $row = $result->fetch_object();
 		  
-		   $rowResultadosTope = $result2->fetch_object();
-		   $rowResultadosMedios = $result3->fetch_object();
-			
+		   $rowmedia50paginas = $result2->fetch_object();
+		   $rowmedia50ediciones = $result3->fetch_object();
+		   $rowmedia50media_ediciones = $resultqueryMediaDeMedia->fetch_object();
+
 			//Medias Datos Wikis
 			
 			
@@ -84,7 +90,7 @@
 				die('There was an error running the query [' . $db->error . ']');
 			}
 				
-			$rowMediaPaginas = $resultMediaPaginas->fetch_assoc();
+			$rowMediaPaginas = $resultMediaPaginas->fetch_object();
 			 
 			
 			
@@ -95,7 +101,7 @@
 				die('There was an error running the query [' . $db->error . ']');
 			}
 				
-			$rowMediaFicherosSubidos = $resultMediaFicherosSubidos->fetch_assoc();
+			$rowMediaFicherosSubidos = $resultMediaFicherosSubidos->fetch_object();
 			 
 			
 			
@@ -106,7 +112,7 @@
 				die('There was an error running the query [' . $db->error . ']');
 			}
 				
-			$rowMediaEdicionesPaginas = $resultMediaEdicionesPaginas->fetch_assoc();
+			$rowMediaEdicionesPaginas = $resultMediaEdicionesPaginas->fetch_object();
 			 
 			
 			
@@ -117,7 +123,7 @@
 				die('There was an error running the query [' . $db->error . ']');
 			}
 				
-			$rowMediaEdicionesMediaPaginas = $resultMediaEdicionesMediaPaginas->fetch_assoc();
+			$rowMediaEdicionesMediaPaginas = $resultMediaEdicionesMediaPaginas->fetch_object();
 			 
 			
 			
@@ -128,11 +134,11 @@
 				die('There was an error running the query [' . $db->error . ']');
 			}
 				
-			$rowMediaUsuariosRegistrados = $resultMediaUsuariosRegistrados->fetch_assoc();
+			$rowMediaUsuariosRegistrados = $resultMediaUsuariosRegistrados->fetch_object();
 			 
 			
 			
-			$queryMediaUsuariosActivos = 'SELECT AVG(wikis.usuarios_activos) as "activos" FROM wikis';	
+			/*$queryMediaUsuariosActivos = 'SELECT AVG(wikis.usuarios_activos) as "activos" FROM wikis';	
 				
 				
 			if( !$resultMediaUsuariosActivos = $db->query($queryMediaUsuariosActivos) ){
@@ -149,7 +155,7 @@
 		  $maxEdicionesPaginas = $row->ediciones_paginas + 300;
 		  $maxUsuariosRegistrados = $row->usuarios_registrados + 300;
 		  $maxUsuariosActivos = $row->usuarios_activos + 300;
-		  
+		  */
 		   
 		  
 		 ?>
@@ -340,31 +346,7 @@
                                     
                                 </div>
 								</div>
-								
-								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-8 col-sm-8 col-xs-12 profile_left">
-							 
-							 
-
-											<div class="x_panel">
-                                <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Statistics <small>Editions, Pages and Files</small></h2>
-                                    
-                                    <div class="clearfix"></div>
-                                </div>
-								<br />
-                                <div class="x_content">
-
-                                    <div id="echart_Barras" style="height:350px;"></div>
-
-                                </div>
-								
-                            </div>
-
-								
-							 
-								</div>
-
-								<div style="    padding-right: 0px;" class="col-md-4 col-sm-4 col-xs-12 profile_left">
+																<div style="    padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
 							 
 							 
 									<div class="x_panel">
@@ -413,6 +395,79 @@
                                         </div>
 							 
 								</div>
+								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+							 
+							 
+
+											<div class="x_panel">
+                                <div class="x_title">
+                                    <h2><i class="fa fa-bars"></i> Page Statistics <!--<small>Editions, Pages and Files</small>--></h2>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+								<br />
+                                <div class="x_content">
+
+                                    <div id="echart_Barras" style="height:350px;"></div>
+
+                                </div>
+								
+                            </div>
+
+								
+							 
+								</div>
+								
+								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+							 
+							 
+
+											<div class="x_panel">
+                                <div class="x_title">
+                                    <h2><i class="fa fa-bars"></i> Editions Statistics <!--<small>Editions, Pages and Files</small>--></h2>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+								<br />
+                                <div class="x_content">
+
+                                    <div id="echart_Barras2" style="height:350px;"></div>
+
+                                </div>
+								
+                            </div>
+
+								
+							 
+								</div>
+								
+								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+							 
+							 
+
+											<div class="x_panel">
+                                <div class="x_title">
+                                    <h2><i class="fa fa-bars"></i> Average Editions Statistics <!--<small>Editions, Pages and Files</small>--></h2>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+								<br />
+                                <div class="x_content">
+
+                                    <div id="echart_Barras3" style="height:350px;"></div>
+
+                                </div>
+								
+                            </div>
+
+								
+							 
+								</div>
+
+								
+								
+
+
 							 
                                         <!-- end of skills -->
 								
@@ -871,9 +926,9 @@
 																						</p>
 																					</div>
 																					<div class="col-xs-12 col-sm-6 emphasis">
-																						<button type="button" class="btn btn-success btn-xs"><i class="fa fa-comments-o"></i>Compare</button>
+																						
 																						<a href="fichaUsuario.php?nombre='.$rowUsuarios->nombre_usuario.'" ><button  type="button" class="btn btn-primary btn-xs"> <i class="fa fa-user">
-																							</i> Wiki</button></a>
+																							</i> Go to User</button></a>
 																					</div>
 																				</div>
 																			</div></a>
@@ -1119,9 +1174,9 @@
 							x: 'right',
 							y: 'center',
 							feature : {
-								mark : {show: true},
-								dataView : {show: true, readOnly: false},
-								magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+								//mark : {show: true},
+								//dataView : {show: true, readOnly: false},
+								//magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
 								restore : {show: true},
 								saveAsImage : {show: true}
 							}
@@ -1130,7 +1185,7 @@
 						xAxis : [
 							{
 								type : 'category',
-								data : ['contenido','paginas','ediciones','ficheros']
+								data : ['This Wiki','50 Top Wikis','All Wikis'/*,'ficheros'*/]
 							}
 						],
 						yAxis : [
@@ -1142,13 +1197,103 @@
 							{
 								name:'<?php echo''.$row->nombre_wiki.''; ?>',
 								type:'bar',
-								data:[<?php echo''.$row->paginas_contenido.''; ?>, <?php echo''.$row->paginas.''; ?>, <?php echo''.$row->ediciones_paginas.''; ?>, <?php echo''.$row->ficheros_subidos.''; ?>]
+								data:[<?php echo''.$row->paginas.''; ?>, <?php echo''.$rowmedia50paginas->resultado.''; ?>, <?php echo ''.$rowMediaPaginas->paginas.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
 							}
 			
 						]
 					});
                     
-
+					var myChart10 = echarts.init(document.getElementById('echart_Barras2'), theme);
+							myChart10.setOption({
+						tooltip : {
+							trigger: 'axis',
+							axisPointer : {            
+								type : 'shadow'        
+							}
+						},
+						legend: {
+							data:['<?php echo''.$row->nombre_wiki.''; ?>']
+						},
+						toolbox: {
+							show : true,
+							orient: 'vertical',
+							x: 'right',
+							y: 'center',
+							feature : {
+								//mark : {show: true},
+								//dataView : {show: true, readOnly: false},
+								//magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+								restore : {show: true},
+								saveAsImage : {show: true}
+							}
+						},
+						calculable : true,
+						xAxis : [
+							{
+								type : 'category',
+								data : ['This Wiki','50 Top Wikis','All Wikis'/*,'ficheros'*/]
+							}
+						],
+						yAxis : [
+							{
+								type : 'value'
+							}
+						],
+						series : [
+							{
+								name:'<?php echo''.$row->nombre_wiki.''; ?>',
+								type:'bar',
+								data:[<?php echo''.$row->ediciones_paginas.''; ?>, <?php echo''.$rowmedia50ediciones->resultado.''; ?>, <?php echo''.$rowMediaEdicionesPaginas->ediciones.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
+							}
+			
+						]
+					});
+					
+					var myChart10 = echarts.init(document.getElementById('echart_Barras3'), theme);
+							myChart10.setOption({
+						tooltip : {
+							trigger: 'axis',
+							axisPointer : {            
+								type : 'shadow'        
+							}
+						},
+						legend: {
+							data:['<?php echo''.$row->nombre_wiki.''; ?>']
+						},
+						toolbox: {
+							show : true,
+							orient: 'vertical',
+							x: 'right',
+							y: 'center',
+							feature : {
+								//mark : {show: true},
+								//dataView : {show: true, readOnly: false},
+								//magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+								restore : {show: true},
+								saveAsImage : {show: true}
+							}
+						},
+						calculable : true,
+						xAxis : [
+							{
+								type : 'category',
+								data : ['This Wiki','50 Top Wikis','All Wikis'/*,'ficheros'*/]
+							}
+						],
+						yAxis : [
+							{
+								type : 'value'
+							}
+						],
+						series : [
+							{
+								name:'<?php echo''.$row->nombre_wiki.''; ?>',
+								type:'bar',
+								data:[<?php echo''.$row->media_ediciones.''; ?>, <?php echo''.$rowmedia50media_ediciones->resultado.''; ?>, <?php echo''.$rowMediaEdicionesMediaPaginas->media.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
+							}
+			
+						]
+					});
         </script>
 		
 		<script>
