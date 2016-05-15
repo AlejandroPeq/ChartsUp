@@ -14,7 +14,7 @@
                                     <li><a href="index.html">  <i class="fa fa-sign-out pull-right"></i>  About colstats</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;">
+                                        <a href="contactar.php">
                                           <i class="fa fa-sign-out pull-right"></i> 
                                             <span>Contact</span>
                                         </a>
