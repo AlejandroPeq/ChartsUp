@@ -38,7 +38,7 @@ $db = new mysqli('localhost', 'root', '');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Colstats FAQ</title>
+    <title>ChartsUp FAQ</title>
 
     <!-- Bootstrap core CSS -->
 

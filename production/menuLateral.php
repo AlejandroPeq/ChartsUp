@@ -8,7 +8,7 @@
 					
 					
                     <div class="navbar nav_title" style="background-color:black; border: 0; font-family: 'Orbitron', sans-serif;">
-                        <a href="principal.php" class="site_title"> <img style="    margin-left: 10px;" id="logo" src="../logoTFG.png"><span style=" color:white; padding:5px;   font-size: 30px;    vertical-align: middle;">Col<span>Stats</span></span></a>
+                        <a href="principal.php" class="site_title"> <img style="    margin-left: 10px;" id="logo" src="../logoTFG.png"><span style=" color:white; padding:5px;   font-size: 30px;    vertical-align: middle;">Charts<span>Up</span></span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -99,9 +99,9 @@
                             </ul>
                         </div>
                         <div class="menu_section">
-                            <h3 style="font-family: 'Montserrat Alternates', sans-serif;">ColStats</h3>
+                            <h3 style="font-family: 'Montserrat Alternates', sans-serif;">ChartsUp</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-cogs"></i> About ColStats <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-cogs"></i> About ChartsUp <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                       
                                         

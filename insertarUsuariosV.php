@@ -117,7 +117,7 @@ $db = new mysqli('localhost', 'root', '');
 			if (!$encontrado && $nombreUsuario!="Editor no registrado" ){
 				
 				
-				$query3 = 'INSERT INTO aportaciones VALUES (null,"'.$nombreUsuario.'", 0 , "'.$urlUsuario.'" , "'.$row->id_wiki.'","","",0)';
+				$query3 = 'INSERT INTO aportaciones VALUES (null,"'.$nombreUsuario.'", 0 , "'.$urlUsuario.'" , "'.$row->id_wiki.'","","",0,0)';
 				if( !$result3 = $db->query($query3) ){
 					die('There was an error running the query [' . $db->error . ']');
 				}

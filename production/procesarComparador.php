@@ -2131,7 +2131,7 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
+            boundaryGap : true,
             data : ['<?php echo ''.$rowWiki4->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
@@ -2144,7 +2144,7 @@ $db->query($queryUpadateComparaciones4);
     series : [
         {
             name:'Paginas',
-            type:'line',
+            type:'bar',
             smooth:true,
             itemStyle: {
                 normal: {
@@ -2203,7 +2203,7 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
+            boundaryGap : true,
             data : ['<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
@@ -2215,7 +2215,7 @@ $db->query($queryUpadateComparaciones4);
     series : [
         {
             name:'Paginas',
-            type:'line',
+            type:'bar',
             smooth:true,
            itemStyle: {
                 normal: {
@@ -2274,7 +2274,7 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
+            boundaryGap : true,
             data : ['<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
@@ -2286,7 +2286,7 @@ $db->query($queryUpadateComparaciones4);
     series : [
         {
             name:'Paginas',
-            type:'line',
+            type:'bar',
             smooth:true,
             itemStyle: {
                 normal: {
@@ -3013,7 +3013,7 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
+            boundaryGap : true,
             data : ['<?php echo ''.$rowWiki4->nombre_wiki.''; ?>','<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
@@ -3025,7 +3025,7 @@ $db->query($queryUpadateComparaciones4);
     series : [
         {
             name:'Media Ediciones',
-            type:'line',
+            type:'bar',
             
 			itemStyle: {
                 normal: {
@@ -3091,7 +3091,7 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
+            boundaryGap : true,
             data : ['<?php echo ''.$rowWiki3->nombre_wiki.''; ?>','<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
@@ -3103,7 +3103,7 @@ $db->query($queryUpadateComparaciones4);
     series : [
         {
             name:'Media Ediciones',
-            type:'line',
+            type:'bar',
             smooth:true,
             itemStyle: {
                 normal: {
@@ -3165,7 +3165,7 @@ $db->query($queryUpadateComparaciones4);
     xAxis : [
         {
             type : 'category',
-            boundaryGap : false,
+            boundaryGap : true,
             data : ['<?php echo ''.$rowWiki2->nombre_wiki.''; ?>','<?php echo ''.$rowWiki1->nombre_wiki.''; ?>']
         }
     ],
@@ -3177,7 +3177,7 @@ $db->query($queryUpadateComparaciones4);
     series : [
         {
             name:'Media Ediciones',
-            type:'line',
+            type:'bar',
             smooth:true,
             itemStyle: {
                 normal: {
@@ -3279,18 +3279,7 @@ var myChart6 = echarts.init(document.getElementById('usersGraph1'), theme);
             name:'<?php echo ''.$rowWikiUsers1->nombre_wiki.''; ?>',
             type:'bar',
             data:[<?php echo ''.$rowWikiUsers1->usuarios_activos.''; ?>, <?php echo ''.$rowWikiUsers1->usuarios_administradores.''; ?>, <?php echo ''.$rowWikiUsers1->usuarios_burocratas.''; ?>, <?php echo ''.$rowWikiUsers1->usuarios_reversores.''; ?>],
-            markLine : {
-                itemStyle:{
-                    normal:{
-                        lineStyle:{
-                            type: 'dashed'
-                        }
-                    }
-                },
-                data : [
-                    [{type : 'min'}, {type : 'max'}]
-                ]
-            }
+           
         }
     ]
 });

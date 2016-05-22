@@ -11,7 +11,7 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="index.html">  <i class="fa fa-sign-out pull-right"></i>  About colstats</a>
+                                    <li><a href="index.html">  <i class="fa fa-sign-out pull-right"></i>  About ChartsUp</a>
                                     </li>
                                     <li>
                                         <a href="contactar.php">

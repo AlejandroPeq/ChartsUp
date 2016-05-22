@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>ColStooy</title>
+    <title>ChartsUp</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -135,7 +135,7 @@
 
                                                     <div class="right col-xs-12 text-center">
                                                         <a href="calendario.php"><img style="    margin-left: auto; margin-right: auto;" src="images/hours.png" alt="" class="img-circle img-responsive fade2"></a>
-														<h2>Calendar ColStooy</h2>
+														<h2>Calendar ChartsUp</h2>
 														<h4 class="brief"><i>Digital Strategist</i></h4>
 													</div>
                                                 </div>

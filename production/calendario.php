@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ColStooy</title>
+        <title>ChartsUp</title>
 
         <!-- Bootstrap core CSS -->
 
@@ -83,7 +83,7 @@
 																	<img src="images/logo.png" alt="Avatar">
 												 </div>
 												
-												<h3 style="margin-top:20px;margin-left:100px; font-size: 15px;color: #34495E;" ><i class="fa fa-cube"></i> ColStooy Calendar</h3>
+												<h3 style="margin-top:20px;margin-left:100px; font-size: 15px;color: #34495E;" ><i class="fa fa-cube"></i> ChartsUp Calendar</h3>
 													<p style="margin-left:100px; ">Lorem ipsum psdea itgum rixt.</p>
 											</div>
 										</div>
