@@ -1,4 +1,4 @@
-# Colstats TFG App
+# ChartsUp TFG App
 
 
 The main goal of this project is to define a tool that allows the user to flexibly display the information that is 
