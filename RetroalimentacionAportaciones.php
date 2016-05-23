@@ -61,7 +61,7 @@
 			$aux2 = str_replace($caracteres,"_",$urlUsuario);
 			
 			echo ''.$aux2.'<br><br>';
-			$query = 'INSERT INTO aportaciones VALUES (null,"'.$rowLogros->nombre_usuario.'", 0 , "'.$aux2.'" , "'.$rowLogros->id_wiki.'","","")';
+			$query = 'INSERT INTO aportaciones VALUES (null,"'.$rowLogros->nombre_usuario.'", 0 , "'.$aux2.'" , "'.$rowLogros->id_wiki.'","","",0,0)';
 
 			$db->query($query);
 			
