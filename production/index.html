@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+It is the first view of the application.
+It contains a video as background and information about what is in the application.
+-->
 <html>
 
 <head>
@@ -12,7 +16,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Main stylesheet -->
-    <link href="assets/css/hallooou.css" rel="stylesheet">
+    <link href="assets/css/chartsup.css" rel="stylesheet">
 
     <!-- Color stylesheet -->
     <!-- <link href="assets/css/colors.css" rel="stylesheet">
@@ -33,7 +37,7 @@
 		
 		body{
 		
-		font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+		font-family: 'Martel Sans', sans-serif;
 		
 		}
 		
@@ -53,7 +57,7 @@
 	
     <!-- Custom Fonts -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    
+    <link href='https://fonts.googleapis.com/css?family=Martel+Sans' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -88,10 +92,9 @@
                         <nav class="overlay-menu">
                             <ul>
                                 
-                                <li><a href="#services">What we do</a></li>
-                                <li><a href="#products">Why choose us</a></li>
-                                <li><a href="#team">Our Team</a></li>
-                                <li><a href="#portfolio">Portfolio</a></li>
+                                <li><a href="#services">What about ChartsUp?</a></li>
+                                <li><a href="#products">Why ChartsUp is awesome?</a></li>
+                                <li><a href="#contactApp">Need some contact?</a></li>
                                 
                         
                             </ul>
@@ -108,12 +111,12 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item video-section active">
-                        <!-- Video from YouTube. Have Questions? How To: https://github.com/pupunzi/jquery.mb.YTPlayer/wiki -->
-                        <a id="bgndVideo" class="player" data-property="{videoURL:'http://youtu.be/GUEZCxBcM78', containment:'.video-section', autoPlay:true, loop:true, mute:true, ratio:'16/9', startAt:4, quality:'hd720', opacity:1, showControls: false, addRaster:true, showYTLogo:false, vol:25,}"></a>
+                     
+                        <a id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/HqURNITAxcE', containment:'.video-section', autoPlay:true, loop:true, mute:true, ratio:'16/9', startAt:0, quality:'hd720', opacity:1, showControls: false, addRaster:true, showYTLogo:false, vol:25,}"></a>
                         <div class="carousel-caption">
-                            <h1 class="animated slideInDown">Discover the Powerful of Charts and What Anyone Cant see using Collaborative Platforms</h1>
-                            <p class="intro-text animated slideInUp">Display incredible charts , useful, look into the statistics, we couldnt do it before!</p>
-                            <a href="principal.php" class="btn btn-default btn-lg">Enter now</a>
+                            <h1 class="animated slideInDown">Discover the power of collaboration</h1>
+                            <p class="intro-text animated slideInUp">Display incredible and useful charts & check out our statistics!</p>
+                            <a href="principal.php" class="btn btn-default btn-lg">Enter</a>
                         </div>
                         <div class="video-controls">
                             <a id="video-volume" class="fa fa-volume-off fa-lg" href="#"></a>
@@ -122,51 +125,269 @@
                         <div class="overlay-detail"></div>
                     </div><!-- /.item -->
                 </div>
-                <div class="mouse"></div>
-            </header>
 
+              
+                     
+                <a href="#services"><div class="mouse"></div></a>
+             
+    
+            </header>
 
 
             <!-- Services Section -->
             <section id="services" class="services content-section">
                 <div class="container">
                     <div class="row text-center">
-                        <div class="col-md-12">
-                            <h2 style="color:black;">What we do</h2>
-                            <h3 class="caption gray">Eleifend mi iaculis parturient etiam volutpat pulvinar eleifendEleifend mi iaculis parturient etiam volutpat pulvinar eleifendEleifend mi iaculis parturient etiam volutpat pulvinar eleifendEleifend mi iaculis parturient etiam volutpat pulvinar eleifendEleifend mi iaculis parturient etiam volutpat pulvinar eleifendEleifend mi iaculis parturient etiam volutpat pulvinar eleifend</h3>
+                        <div class="col-md-12" style="    margin-bottom: 35px;">
+                            <h2 style="color:black;">What about ChartsUp?</h2>
+                            <p>
+It is a tool for collaborative data collection entities. Analyse the data and shows it in our modern and interactive graphics, for a better understanding of the platform's activity . We offer tools that allow you to draw conclusions, complex task from collaborative platforms.</p>
                         </div><!-- /.col-md-12 -->
 
-                        <div class="container">
-                            <div class="row text-center">
-                                <div class="col-md-4">
-                                    <div class="row services-item sans-shadow text-center">
-                                        <i class="fa fa-cogs fa-3x"></i>
-                                        <h4>Development</h4>
-                                        <p>We build Wordpress and custom plugins and back-end solutions.</p>
-                                    </div><!-- /.row -->
-                                </div><!-- /.col-md-4 -->
+                <style type="text/css">
+
+/*--about--*/
+.about,.team,.contact,.skills{
+    padding:6em 0;
+}
+
+.about-grids {
+    text-align: center;
+}
+.about-grids h4 {
+    font-size: 1.5em;
+    margin: 1em 0 .5em;
+    color: #000;
+    line-height: 1.5em;
+    position:relative;
+}
+
+.about-grids h6 {
+    padding: 1px;
+    background: #a94442;
+    width: 33%;
+    margin: 2em auto 0;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    transition:.5s all;
+}
+.about-grids:hover h6 {
+    width: 55%;
+}
+/*-- Effect 1--*/
+.about-grids span {
+    font-size: 1.8em;
+    color: #999;
+    display: inline-block;
+    border-radius: 50%;
+    text-decoration: none;
+    z-index: 1;
+    padding: 1em;
+}
+.about-grids span:after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    content: '';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.effect-1 {
+    background: #E2DFDF;
+    -webkit-transition: background 0.5s, color 0.2s;
+    -moz-transition: background 0.5s, color 0.2s;
+    transition: background 0.5s, color 0.2s;
+}
+.effect-1:after {
+    top: -7px;
+    left: -7px;
+    padding: 7px;
+    box-shadow: 0 0 0 2px #A94442;
+    -webkit-transition: -webkit-transform 0.5s, opacity 0.2s;
+    -webkit-transform: scale(0.8);
+    -moz-transition: -moz-transform 0.5s, opacity 0.2s;
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transition: transform 0.5s, opacity 0.2s;
+    /* transform: scale(0.8); */
+    opacity: 0;
+}
+.about-grids:hover span{
+    background:#A94442;
+    color: #fff !important;
+}
+.about-grids:hover span:after {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+/*--//Effect 1--*/
+/*--//about--*/
+
+/*---- responsive-design -----*/
+
+@media(max-width:1280px){
+
+.about, .team, .contact, .skills {
+    padding: 5em 0;
+}
+}
+@media(max-width:1080px){
+
+.about, .team, .contact, .skills {
+    padding: 4em 0;
+}
+
+.about-grids h4 {
+    font-size: 1.3em;
+}
+
+}
+
+@media(max-width:991px){
+
+.about-grids {
+    float: left;
+    width: 50%;
+}
+.about-grids:nth-child(3),.about-grids:nth-child(4){
+    margin-top: 2em;
+}
+.about-grids span {
+    font-size: 1.4em;
+}
+.about-grids h4 {
+    font-size: 1.2em;
+}
+.about-grids h6 {
+    margin: 1em auto 0;
+}
+
+}
+@media(max-width:900px){
+
+.about, .team, .contact, .skills {
+    padding: 3em 0;
+}
+.features-grids {
+    width: 48%;
+}
+
+}
 
 
-                                <div class="col-md-4">
-                                    <div class="row services-item sans-shadow text-center">
-                                        <i class="fa fa-database fa-3x"></i>
-                                        <h4>System Design</h4>
-                                        <p>Every website needs the right environment if it plans to be successful</p>
-                                    </div><!-- /.row -->
-                                </div><!-- /.col-md-4 -->
+@media(max-width:640px){
 
-                                <div class="col-md-4">
-                                    <div class="row services-item sans-shadow text-center">
-                                        <i class="fa fa-align-left fa-3x"></i>
-                                        <h4>Copywriting</h4>
-                                        <p>What you say and how you say it is as important as everything else</p>
-                                    </div><!-- /.row -->
-                                </div><!-- /.col-md-4 -->
+.features-grids {
+    width: 55%;
+}
 
-                              
+}
 
-                            </div><!-- /.row -->
-                        </div><!-- /.container -->
+@media(max-width:480px){
+
+.features-grids {
+    width: 72%;
+}
+.team-grids {
+    width: 50%;
+    margin: 0.5em auto;
+    padding: 0 0.5em;
+}
+
+.team-grids:hover .captn {
+    bottom: 20%;
+}
+
+}
+@media(max-width:414px){
+
+.about-grids {
+    float: none;
+    width: 100%;
+}
+.about-grids:nth-child(2){
+    margin-top: 2em;
+}
+.features-grids {
+    width: 90%;
+}
+
+.features, .portfolio {
+    padding: 2.5em 0;
+}
+
+.about-grids:nth-child(3), .about-grids:nth-child(4) {
+    margin-top: 1.5em;
+}
+}
+
+@media(max-width:375px){ 
+
+.features-grids {
+    width: 93%;
+    padding: 1.5em;
+}
+.team-grids {
+    width: 80%;
+}
+
+}
+@media(max-width:320px){
+
+.about, .team, .contact, .skills {
+    padding: 1.5em 0;
+}
+
+.about-grids h4 {
+    margin: 1em 0 0.2em;
+}
+
+.about-grids:nth-child(2),.about-grids:nth-child(3), .about-grids:nth-child(4) {
+    margin-top: 1.5em;
+}
+
+}
+/*--//responsive-design---*/
+
+                </style>
+
+
+                        <div class="about-row">
+                <div class="col-md-3 about-grids">
+                    <span class="glyphicon glyphicon-stats effect-1" aria-hidden="true"></span>
+                    <h4>Dynamic Charts</h4>
+                    <p>All the charts have a powerfull engine behind</p>
+                    <h6> </h6>
+                </div>
+                <div class="col-md-3 about-grids">
+                    <span class="glyphicon glyphicon-user effect-1" aria-hidden="true"></span>
+                    <h4>Colaborative Users</h4>
+                    <p>Bringing information from active users</p>
+                    <h6> </h6>
+                </div>
+                <div class="col-md-3 about-grids">
+                    <span class="glyphicon glyphicon-list-alt effect-1" aria-hidden="true"></span>
+                    <h4>Helpful Tools</h4>
+                    <p>Powerful tools using the last tecnology</p>
+                    <h6> </h6>
+                </div>
+                <div class="col-md-3 about-grids">
+                    <span class="glyphicon glyphicon-check effect-1" aria-hidden="true"></span>
+                    <h4>Direct Information</h4>
+                    <p>Building a bridge between both sides</p>
+                    <h6> </h6>
+                </div>
+                <div class="clerfix"> </div>
+            </div>
+                        
 
                     </div><!-- /.row -->
                 </div><!-- /.container -->
@@ -176,7 +397,7 @@
 
             <!-- Products Section -->
             <section id="products" class="products content-section">
-                <div class="container">
+                <div class="container" style="    padding-top: 30px;">
                     <div class="row">
                         <div class="col-md-4">
                             <img src="assets/images/hallooou_template-iphone_white.png" class="center-block img-responsive">
@@ -185,68 +406,68 @@
                         <div class="col-md-8">
                             <div class="products-container">
 
-                                <div class="col-md-12">
+                                <div class="col-md-12" >
                                     <h2>Why ChartsUp is awesome?</h2>
-                                    <h3 class="caption white">Ultricestum urna litora sit sed praesent condimentum eu a et scelerisque</h3>
+                                    <h3 class="caption white">All these features make this application a useful tool </h3>
                                 </div><!-- /.col-md-12 -->
 
-                                <div class="col-md-6 product-item">
+                                <div class="col-md-6 product-item" style="    min-height: 140px;">
                                     <div class="media-left">
                                         <span class="icon"><i class="fa fa-arrows-alt fa-3x"></i></span>
                                     </div><!-- /.media-left -->
                                     <div class="media-body">
-                                        <h3 class="media-heading">Responsive Layout</h3>
-                                        <p>Powerful Layout with Responsive functionality that can be adapted to any screen size.</p>
+                                        <h3 class="media-heading">Colaborative Platforms</h3>
+                                        <p>It is based on collaborative entities .</p>
                                     </div><!-- /.media-body -->
                                 </div><!-- /.col-md-6 -->
 
-                                <div class="col-md-6 product-item">
+                                <div class="col-md-6 product-item" style="    min-height: 140px;">
                                     <div class="media-left">
                                         <span class="icon"><i class="fa fa-eye fa-3x"></i></span>
                                     </div><!-- /.media-left -->
                                     <div class="media-body">
-                                        <h3 class="media-heading">Retina Ready Graphics</h3>
-                                        <p>Looks beautiful &amp; ultra-sharp on Retina Displays with Retina Icons, Fonts &amp; Images.</p>
+                                        <h3 class="media-heading">Dynamic Charts </h3>
+                                        <p>Dynamic and modern graphics .</p>
                                     </div><!-- /.media-body -->
                                 </div><!-- /.col-md-6 -->
 
-                                <div class="col-md-6 product-item">
+                                <div class="col-md-6 product-item" style="    min-height: 140px;">
                                     <div class="media-left">
                                         <span class="icon"><i class="fa fa-arrows-v fa-3x"></i></span>
                                     </div><!-- /.media-left -->
                                     <div class="media-body">
-                                        <h3 class="media-heading">Parallax Sections</h3>
-                                        <p>Comes with Parallax effect script so you can add Parallax effect to any section of the website.</p>
+                                        <h3 class="media-heading">Interactive Charts</h3>
+                                        <p>The user interacts with the information.</p>
                                     </div><!-- /.media-body -->
                                 </div><!-- /.col-md-6 -->
 
-                                <div class="col-md-6 product-item">
+                                <div class="col-md-6 product-item" style="    min-height: 140px;">
                                     <div class="media-left">
-                                        <span class="icon"><i class="fa fa-video-camera fa-3x"></i></span>
+                                        <span class="icon"><i class="fa fa-mobile fa-3x"></i></span>
                                     </div><!-- /.media-left -->
                                     <div class="media-body">
-                                        <h3 class="media-heading">YouTube &amp; HTML5 Background Video</h3>
-                                        <p>Choose to display either YouTube or HTML5 as background video.</p>
+                                        <h3 class="media-heading">Responsive layout</h3>
+                                        <p>Design adapted to the screens.</p>
                                     </div><!-- /.media-body -->
                                 </div><!-- /.col-md-6 -->
 
-                                <div class="col-md-6 product-item">
+                                <div class="col-md-6 product-item" style="    min-height: 140px;">
                                     <div class="media-left">
-                                        <span class="icon"><i class="fa fa-toggle-on fa-3x"></i></span>
+                                        <span class="icon"><i class="fa fa-search fa-3x"></i></span>
                                     </div><!-- /.media-left -->
                                     <div class="media-body">
-                                        <h3 class="media-heading">Color Options</h3>
-                                        <p>Choose a color that suits your brand &amp; change the color of the template with just one CSS file.</p>
+                                        <h3 class="media-heading">Powerful Seeker</h3>
+                                        <p>Powerful search engine with filtered.</p>
                                     </div><!-- /.media-body -->
                                 </div><!-- /.col-md-6 -->
 
-                                <div class="col-md-6 product-item">
+                                <div class="col-md-6 product-item" style="    min-height: 140px;">
                                     <div class="media-left">
-                                        <span class="icon"><i class="fa fa-envelope-o fa-3x"></i></span>
+                                        <span class="icon"><i class="fa fa-retweet fa-3x"></i></span>
                                     </div><!-- /.media-left -->
                                     <div class="media-body">
-                                        <h3 class="media-heading">Contact form</h3>
-                                        <p>Fully functional PHP contact form, with user input validation.</p>
+                                        <h3 class="media-heading">Compare Tool</h3>
+                                        <p>Friendly and intuitive comparison tool.</p>
                                     </div><!-- /.media-body -->
                                 </div><!-- /.col-md-6 -->
 
@@ -259,99 +480,17 @@
 
 
 
-        
-
-
-
-            <!-- Portfolio/Gallery Section -->
-            <section id="portfolio" class="portfolio content-section">
-                <div class="container">
-                    <div class="row text-center">
-                        <div class="col-md-12">
-                            <h2>Some of our recent work</h2>
-                            <h3 class="caption white">Designed with passion and coded to perfection, ChartsUp is a stylish responsive HTML template, that is packed with tons of features yet is so easy to use. </h3>
-                        </div><!-- /.col-md-12 -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-
-                <div class="container project-container text-center">
-                    <div class="recent-project-carousel owl-carousel owl-theme popup-gallery">
-                        <div class="item recent-project">
-                            <img src="assets/images/gallery/project-one.jpg" alt="">
-                            <div class="project-info">
-                                <h3>Lakeview Inc.</h3>
-                                <ul class="project-meta">
-                                    <li><a href="#">Website Design</a></li>
-                                </ul>
-                            </div><!-- /.project-info -->
-                            <div class="full-project">
-                                <a href="assets/images/gallery/project-one_xl.jpg" title="Lakeview Inc. | Website Design">View project <i class="fa fa-chevron-right"></i></a>
-                            </div><!-- /.full-project -->
-                        </div><!-- /.item -->
-
-                        <div class="item recent-project">
-                            <img src="assets/images/gallery/project-two.jpg" alt="">
-                            <div class="project-info">
-                                <h3>Adam Productions</h3>
-                                <ul class="project-meta">
-                                    <li><a href="#">App Design</a></li>
-                                </ul>
-                            </div><!-- /.project-info -->
-                            <div class="full-project">
-                                <a href="assets/images/gallery/project-two_xl.jpg" title="Adam Productions | App Design">View project <i class="fa fa-chevron-right"></i></a>
-                            </div><!-- /.full-project -->
-                        </div><!-- /.item -->
-
-                        <div class="item recent-project">
-                            <img src="assets/images/gallery/project-three.jpg" alt="">
-                            <div class="project-info">
-                                <h3>Doe Associates</h3>
-                                <ul class="project-meta">
-                                    <li><a href="#">Branding</a></li>
-                                </ul>
-                            </div><!-- /.project-info -->
-                            <div class="full-project">
-                                <a href="assets/images/gallery/project-three_xl.jpg" title="Doe Associates | Branding">View project <i class="fa fa-chevron-right"></i></a>
-                            </div><!-- /.full-project -->
-                        </div><!-- /.item -->
-
-                        <div class="item recent-project">
-                            <img src="assets/images/gallery/project-four.jpg" alt="">
-                            <div class="project-info">
-                                <h3>Omega Corporation</h3>
-                                <ul class="project-meta">
-                                    <li><a href="#">App Design</a></li>
-                                </ul>
-                            </div><!-- /.project-info -->
-                            <div class="full-project">
-                                <a href="assets/images/gallery/project-four_xl.jpg" title="Omega Corporation | App Design">View project <i class="fa fa-chevron-right"></i></a>
-                            </div><!-- /.full-project -->
-                        </div><!-- /.item -->
-
-                    </div><!-- /.recent-project-carousel -->
-
-                    <div class="customNavigation project-navigation text-center">
-                        <a class="btn-prev"><i class="fa fa-angle-left fa-2x"></i></a>
-                        <a class="btn-next"><i class="fa fa-angle-right fa-2x"></i></a>
-                    </div><!-- /.project-navigation -->
-
-                </div><!-- /.container -->
-            </section><!-- /.portfolio -->
-
-
-
-
             <!-- Call to action - one section -->
-            <section class="cta-one-section content-section alt-bg-light">
+            <section id="contactApp" class="cta-one-section content-section alt-bg-light">
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-md-6">
-                            <h2>ChartsUp is a creative HTML5 template</h2>
-                            <h3 class="caption gray">Optional title for call to action</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto quis quam, culpa deserunt hic et numquam eius accusamus expedita quidem sit voluptate!</p>
+                            <h2 style="color:black;">Do you need more information?</h2>
+                            <h3 class="caption gray">All the information is available in github</h3>
+                            <p>If you are interested, you can download our project on github. There you have all the instructions, and if that's not enough, then you can use our contact form, we will try to answer as soon as possible.</p>
 
-                            <a href="#" class="btn btn-default btn-lg">Questions?</a>
-                            <a href="#" class="btn btn-outlined btn-lg">Contact us</a>
+                            <a href="https://github.com/Grasia/ChartsUp" target="_blank;" class="btn btn-default btn-lg"><i class="fa fa-github"></i> Github</a>
+                            <a href="contactar.php" class="btn btn-outlined btn-lg"><i class="fa fa-envelope"></i> Contact form</a>
                         </div><!-- /.col-md-6 -->
 
                         <div class="col-md-6">
@@ -369,29 +508,28 @@
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-md-12">
-                            <h2 class="white">Our Achievements</h2>
-                            <h3 class="caption">Ultricestum urna litora sit sed praesent condimentum eu a et scelerisque</h3>
+                            <h2 class="white">Some figures</h2>
+                            <h3 class="caption">Want to know more obout the data?</h3>
                         </div><!-- /.col-md-12 -->
 
-                        <div class="col-sm-3 counter-wrap">
-                            <strong><span class="timer">350</span>+</strong>
-                            <span class="count-description">Clients Worked With</span>
+                        <div class="col-sm-4 counter-wrap">
+                            <strong>+<span class="timer"> 1500</span></strong>
+                            <span class="count-description">Wikis</span>
                         </div><!-- /.col-sm-3 -->
 
-                        <div class="col-sm-3 counter-wrap">
-                            <strong><span class="timer">250</span>+</strong>
-                            <span class="count-description">Nominations</span>
+                        <div class="col-sm-4 counter-wrap">
+                            <strong>+<span class="timer"> 35690500</span></strong>
+                            <span class="count-description">Total editions</span>
                         </div><!-- /.col-sm-3 -->
 
-                        <div class="col-sm-3 counter-wrap">
-                            <strong><span class="timer">160</span>+</strong>
-                            <span class="count-description">Awards Won</span>
+                       
+
+                        <div class="col-sm-4 counter-wrap">
+                            <strong>+<span class="timer"> 14350000</span></strong>
+                            <span class="count-description">Content Pages</span>
                         </div><!-- /.col-sm-3 -->
 
-                        <div class="col-sm-3 counter-wrap">
-                            <strong><span class="timer">1650</span>+</strong>
-                            <span class="count-description">Cups Of Coffee</span>
-                        </div><!-- /.col-sm-3 -->
+                     
 
                     </div><!-- /.row -->
                 </div><!-- /.container -->
@@ -404,11 +542,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-9">
-                            <h3>Have an idea?</h3>
-                            <p>We’re here to help you manage your work</p>
+                            <h3>Ready to start?</h3>
+                            <p>Let's discover our full ChartsUp dashboard</p>
                         </div>
                         <div class="col-sm-3">
-                            <a href="#" class="btn btn-overcolor">Get in touch</a>
+                            <a href="principal.php" class="btn btn-overcolor">Wellcome</a>
                         </div>
                     </div><!-- /.row -->
                 </div><!-- /.container -->
@@ -431,16 +569,15 @@
 									
 									</h2>
                             </a>
-                            <p class="white">We believe in Simple, Creative &amp; Flexible Design Standards.</p>
+                            <p class="white">We believe in Simple, Creative &amp; Flexible solutions in complex troubles.</p>
                         </div><!-- /.col-md-12 -->
                     </div><!-- /.row -->
 
                     <div class="row text-center">
                         <div class="col-md-12 social segment">
-                            <h4>Stay Connected</h4>
-                            <a href="#"><i class="fa fa-facebook fa-3x"></i></a>
-                            <a href="#"><i class="fa fa-twitter fa-3x"></i></a>
-                            <a href="#"><i class="fa fa-linkedin fa-3x"></i></a>
+                            <h4>Follow our project</h4>
+                            
+                             <a href="https://github.com/Grasia/ChartsUp" target="_blank;"><i class="fa fa-github fa-3x"></i></a>
                         </div><!-- /.col-md-12 -->
                     </div><!-- /.row -->
 
@@ -450,15 +587,15 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                &copy; 2016. ChartsUp. All rights reserved.
+                                &copy; 2016. ChartsUp.
                             </div><!-- /.col-md-12 -->
 
                         </div><!-- /.row -->
                     </div><!-- /.container -->
                 </div><!-- /.copynote -->
 
-                <div class="nav pull-right scroll-top">
-                    <a href="#home" title="Scroll to top"><i class="fa fa-angle-up"></i></a>
+                <div class="nav pull-right scroll-top" style="border-radius: 30px;">
+                    <a href="#home" title="Scroll to top" style="border-radius: 30px;"><i style="border-radius: 30px;" class="fa fa-angle-up"></i></a>
                 </div>
 
             </footer><!-- /.footer -->

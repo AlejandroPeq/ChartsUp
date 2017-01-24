@@ -1,17 +1,9 @@
 <!DOCTYPE html>
-
+<!-- 
+It contains legal and private information about using the product. -->
 <?php
 
-$db = new mysqli('localhost', 'root', '');
-		  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-	   
-		
-		  $db->select_db('tfgdatabase');
+include 'dbConect.php';
 		  
 		  $query = 'SELECT * FROM preguntas';
 					

@@ -1,17 +1,11 @@
 <?php
+/*
 
+Displays the set of notifications from the web, grouping them according to the occasion.
+*/
 		ini_set('max_execution_time', 2000);
 		
-		$db = new mysqli('localhost', 'root', '');
-		  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-	   
-		
-		  $db->select_db('tfgdatabase');
+		include 'dbConect.php';
 		  
 		  //First Type
 		  
@@ -71,235 +65,245 @@
 ?>
 
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>ColStooy </title>
+        <title>ChartsUp Notifications </title>
 
-    <!-- Bootstrap core CSS -->
-	
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
 
-    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styling plus plugins -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/icheck/flat/green.css" rel="stylesheet">
-    <link href="css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
+        <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/animate.min.css" rel="stylesheet">
 
-    <script src="js/jquery.min.js"></script>
-
-   
-	<style>
-	
-	h2,h3, #userName{
-	
-		font-family: 'Montserrat Alternates', sans-serif;
-	}
-	
-	.DTTT_button{
-		
-		display:none;
-		
-	}
-	
-	.fade {
-   opacity: 1;
-   transition: opacity .25s ease-in-out;
-   -moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
-   }
-
-   .fade:hover {
-      opacity: 0.5;
-      }
-	
-	.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-		background-color: #DADADA;
-	}
-	</style>	
-		
-	
-		
-</head>
+        <!-- Custom styling plus plugins -->
+        <link href="css/custom.css" rel="stylesheet">
+        <link href="css/icheck/flat/green.css" rel="stylesheet">
+        <link href="css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
+        <link rel="icon" href="images/logoTFG.png">
+        <script src="js/jquery.min.js"></script>
 
 
-<body class="nav-md">
+        <style>
+            h2,
+            h3,
+            #userName {
+                font-family: 'Montserrat Alternates', sans-serif;
+            }
+            
+            .DTTT_button {
+                display: none;
+            }
+            
+            .fade {
+                opacity: 1;
+                transition: opacity .25s ease-in-out;
+                -moz-transition: opacity .25s ease-in-out;
+                -webkit-transition: opacity .25s ease-in-out;
+            }
+            
+            .fade:hover {
+                opacity: 0.5;
+            }
+            
+            .nav-tabs>li.active>a,
+            .nav-tabs>li.active>a:hover,
+            .nav-tabs>li.active>a:focus {
+                background-color: #DADADA;
+            }
+        </style>
 
-    <div class="container body">
 
 
-        <div class="main_container">
+    </head>
 
-             <?php
+
+    <body class="nav-md">
+
+        <div class="container body">
+
+
+            <div class="main_container">
+
+                <?php
 				include'menuLateral.php';
 			?>
 
-            <!-- top navigation -->
-            <div class="top_nav">
+                    <!-- top navigation -->
+                    <div class="top_nav">
 
-                <?php
+                        <?php
 				include'barraSuperior.php';
 				?>
 
-            </div>
-            <!-- /top navigation -->
+                    </div>
+                    <!-- /top navigation -->
 
-            <!-- page content -->
-            <div class="right_col" role="main">
-                <div class="">
-                    
-                    <div class="clearfix"></div>
+                    <!-- page content -->
+                    <div class="right_col" role="main">
+                        <div class="">
 
-                    <div class="row">
+                            <div class="clearfix"></div>
 
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            
-							<div class="x_panel">
-                                <div class="x_title">
+                            <div class="row">
 
-									<div class="row top_tiles">
-										<div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
-											<div style="border:0px;" class="tile-stats">
-												
-												<div class="avatar-view" style=" float:left; width: 90px;border-radius: 50%;height: auto;" title="Change the avatar">
-																	<img src="images/logo.png" alt="Avatar">
-												 </div>
-												
-												<h3 style="margin-top:20px;margin-left:100px; font-size: 15px;color: #34495E;" >ColStooy Notifications</h3>
-													<p style="margin-left:100px; ">Complete notifications list.</p>
-											</div>
-										</div>
-										<div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
-											<div class="tile-stats">
-												<div class="icon"><i class="fa fa-cog"style="font-size: 55px;"></i>
-												</div>
-												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $num_results; ?></div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
 
-												<h3>Tools</h3>
-												<p>Tools Notifications.</p>
-											</div>
-										</div>
-										<div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
-											<div class="tile-stats">
-												<div class="icon"><i class="fa fa-database"style="font-size: 55px;"></i>
-												</div>
-												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $num_results2; ?></div>
+                                    <div class="x_panel">
+                                        <div class="x_title">
 
-												<h3>Database</h3>
-												<p>DDBB Notifications.</p>
-											</div>
-										</div>
-										<div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
-											<div class="tile-stats">
-												<div class="icon"><i class="fa fa-file-code-o"style="font-size: 55px;"></i>
-												</div>
-												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $num_results3; ?></div>
+                                            <div class="row top_tiles">
+                                                <div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                    <div style="border:0px;" class="tile-stats">
 
-												<h3>Develop</h3>
-												<p>Develop Notifications.</p>
-											</div>
-										</div>
-										<div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
-											<div class="tile-stats">
-												<div class="icon"><i class="fa fa-bar-chart"style="font-size: 55px;"></i>
-												</div>
-												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $num_results4; ?></div>
+                                                        <div class="avatar-view" style=" float:left; width: 90px;border-radius: 50%;height: auto;" title="Change the avatar">
+                                                            <img src="images/logo.png" alt="Avatar">
+                                                        </div>
 
-												<h3>Charts</h3>
-												<p>Charts Notifications.</p>
-											</div>
-										</div>
-										<div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
-											<div class="tile-stats">
-												<div class="icon"><i class="fa fa-users"style="font-size: 55px;"></i>
-												</div>
-												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $num_results5; ?></div>
+                                                        <h3 style="margin-top:20px;margin-left:100px; font-size: 15px;color: #34495E;">ChartsUp Notifications</h3>
+                                                        <p style="margin-left:100px; ">Complete notifications list.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                    <div class="tile-stats">
+                                                        <div class="icon"><i class="fa fa-cog" style="font-size: 55px;"></i>
+                                                        </div>
+                                                        <div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count">
+                                                            <?php echo $num_results; ?>
+                                                        </div>
 
-												<h3>Social</h3>
-												<p>Collaborative Notifications.</p>
-											</div>
-										</div>
-										
-									</div>
-                                   
-                                    
-                                </div>
-								</div>
-							
-							
-							
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Inteligent tables </h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
-                                                </li>
-                                                <li><a href="#">Settings 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
+                                                        <h3>Tools</h3>
+                                                        <p>Tools Notifications.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                    <div class="tile-stats">
+                                                        <div class="icon"><i class="fa fa-database" style="font-size: 55px;"></i>
+                                                        </div>
+                                                        <div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count">
+                                                            <?php echo $num_results2; ?>
+                                                        </div>
 
-                                    <div class="col-xs-2">
-                                        <!-- required for floating -->
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs tabs-left">
-                                            <li class="active"><a href="#tool" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/wrench.png"></span>Special Tools</a>
-                                            </li>
-                                            <li><a href="#bbdd" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/database.png"></span>Database</a>
-                                            </li>
-                                            <li><a href="#desarrollo" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/web.png"></span>Development</a>
-                                            </li>
-                                            <li><a href="#panel" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/chart.png"></span>Charts</a>
-                                            </li>										
-											<li><a href="#wikia" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/social.png"></span>Collaborative</a>
-                                            </li>
-                                        </ul>
+                                                        <h3>Database</h3>
+                                                        <p>DDBB Notifications.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                    <div class="tile-stats">
+                                                        <div class="icon"><i class="fa fa-file-code-o" style="font-size: 55px;"></i>
+                                                        </div>
+                                                        <div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count">
+                                                            <?php echo $num_results3; ?>
+                                                        </div>
+
+                                                        <h3>Develop</h3>
+                                                        <p>Develop Notifications.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                    <div class="tile-stats">
+                                                        <div class="icon"><i class="fa fa-bar-chart" style="font-size: 55px;"></i>
+                                                        </div>
+                                                        <div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count">
+                                                            <?php echo $num_results4; ?>
+                                                        </div>
+
+                                                        <h3>Charts</h3>
+                                                        <p>Charts Notifications.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="animated flipInY col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                    <div class="tile-stats">
+                                                        <div class="icon"><i class="fa fa-users" style="font-size: 55px;"></i>
+                                                        </div>
+                                                        <div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count">
+                                                            <?php echo $num_results5; ?>
+                                                        </div>
+
+                                                        <h3>Social</h3>
+                                                        <p>Collaborative Notifications.</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
                                     </div>
 
-                                    <div class="col-xs-10">
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="tool">
-                                                
-													<div class="x_panel">
 
-															<div class="x_content">
-																<table id="example" class="table table-striped responsive-utilities jambo_table">
-																	<thead>
-																		<tr class="headings">
-																			
-																			<th>Tipo</th>
-																			 <th>Título</th>
-																			 <th>Resumen</th>
-																			 <th>Descripción</th>
-																			 <th>Versión</th>
-																			 <th>Fecha</th>
-																			
-																		</tr>
 
-																	<tbody>
-																		
-																		<?php
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2><i class="fa fa-bars"></i> Inteligent tables </h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">Settings 1</a>
+                                                        </li>
+                                                        <li><a href="#">Settings 2</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+
+                                            <div class="col-xs-2">
+                                                <!-- required for floating -->
+                                                <!-- Nav tabs -->
+                                                <ul class="nav nav-tabs tabs-left">
+                                                    <li class="active"><a href="#tool" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/wrench.png"></span>Special Tools</a>
+                                                    </li>
+                                                    <li><a href="#bbdd" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/database.png"></span>Database</a>
+                                                    </li>
+                                                    <li><a href="#desarrollo" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/web.png"></span>Development</a>
+                                                    </li>
+                                                    <li><a href="#panel" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/chart.png"></span>Charts</a>
+                                                    </li>
+                                                    <li><a href="#wikia" data-toggle="tab"><span class="image"><img style="float: left;margin-right: 10px;width: 7%;" src="images/social.png"></span>Collaborative</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-xs-10">
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="tool">
+
+                                                        <div class="x_panel">
+
+                                                            <div class="x_content">
+                                                                <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                                                    <thead>
+                                                                        <tr class="headings">
+
+                                                                            <th>Tipo</th>
+                                                                            <th>Título</th>
+                                                                            <th>Resumen</th>
+                                                                            <th>Descripción</th>
+                                                                            <th>Versión</th>
+                                                                            <th>Fecha</th>
+
+                                                                        </tr>
+
+                                                                        <tbody>
+
+                                                                            <?php
 																		
 																		
 																		
@@ -324,37 +328,37 @@
 																		 
 																		 }
 																		?>
-																		
-																	</tbody>
 
-																</table>
-															</div>
-														</div>
+                                                                        </tbody>
 
-											
-											</div>
-                                            <div class="tab-pane" id="bbdd">
-											
-														<div class="x_panel">
+                                                                </table>
+                                                            </div>
+                                                        </div>
 
-															<div class="x_content">
-																<table id="example2" class="table table-striped responsive-utilities jambo_table">
-																	<thead>
-																		<tr class="headings">
-																			
-																			<th>Tipo</th>
-																			 <th>Título</th>
-																			 <th>Resumen</th>
-																			 <th>Descripción</th>
-																			 <th>Versión</th>
-																			 <th>Fecha</th>
-																		</tr>
 
-																	<tbody>
-																		
-																		
-																		
-																		<?php
+                                                    </div>
+                                                    <div class="tab-pane" id="bbdd">
+
+                                                        <div class="x_panel">
+
+                                                            <div class="x_content">
+                                                                <table id="example2" class="table table-striped responsive-utilities jambo_table">
+                                                                    <thead>
+                                                                        <tr class="headings">
+
+                                                                            <th>Tipo</th>
+                                                                            <th>Título</th>
+                                                                            <th>Resumen</th>
+                                                                            <th>Descripción</th>
+                                                                            <th>Versión</th>
+                                                                            <th>Fecha</th>
+                                                                        </tr>
+
+                                                                        <tbody>
+
+
+
+                                                                            <?php
 																		
 																		
 																	 for( $i = 0; $i < $num_results2; $i++ ){
@@ -376,34 +380,34 @@
 																		 
 																		 }
 																		?>
-																		
-																	</tbody>
 
-																</table>
-															</div>
-														</div>
-											
-											</div>
-                                            <div class="tab-pane" id="desarrollo">
-											
-													<div class="x_panel">
+                                                                        </tbody>
 
-															<div class="x_content">
-																<table id="example3" class="table table-striped responsive-utilities jambo_table">
-																	<thead>
-																		<tr class="headings">
-																			
-																			<th>Tipo</th>
-																			 <th>Título</th>
-																			 <th>Resumen</th>
-																			 <th>Descripción</th>
-																			 <th>Versión</th>
-																			 <th>Fecha</th>
-																		</tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
 
-																	<tbody>
-																		
-																		<?php
+                                                    </div>
+                                                    <div class="tab-pane" id="desarrollo">
+
+                                                        <div class="x_panel">
+
+                                                            <div class="x_content">
+                                                                <table id="example3" class="table table-striped responsive-utilities jambo_table">
+                                                                    <thead>
+                                                                        <tr class="headings">
+
+                                                                            <th>Tipo</th>
+                                                                            <th>Título</th>
+                                                                            <th>Resumen</th>
+                                                                            <th>Descripción</th>
+                                                                            <th>Versión</th>
+                                                                            <th>Fecha</th>
+                                                                        </tr>
+
+                                                                        <tbody>
+
+                                                                            <?php
 																		
 		
 																		 for( $i = 0; $i < $num_results3; $i++ ){
@@ -425,35 +429,35 @@
 																		 
 																		 }
 																		?>
-																		
-																	</tbody>
 
-																</table>
-															</div>
-														</div>
-											
-											
-											</div>
-                                            <div class="tab-pane" id="panel">
-											
-													<div class="x_panel">
+                                                                        </tbody>
 
-															<div class="x_content">
-																<table id="example4" class="table table-striped responsive-utilities jambo_table">
-																	<thead>
-																		<tr class="headings">
-																			
-																			<th>Tipo</th>
-																			 <th>Título</th>
-																			 <th>Resumen</th>
-																			 <th>Descripción</th>
-																			 <th>Versión</th>
-																			 <th>Fecha</th>
-																		</tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
 
-																	<tbody>
-																		
-																		<?php
+
+                                                    </div>
+                                                    <div class="tab-pane" id="panel">
+
+                                                        <div class="x_panel">
+
+                                                            <div class="x_content">
+                                                                <table id="example4" class="table table-striped responsive-utilities jambo_table">
+                                                                    <thead>
+                                                                        <tr class="headings">
+
+                                                                            <th>Tipo</th>
+                                                                            <th>Título</th>
+                                                                            <th>Resumen</th>
+                                                                            <th>Descripción</th>
+                                                                            <th>Versión</th>
+                                                                            <th>Fecha</th>
+                                                                        </tr>
+
+                                                                        <tbody>
+
+                                                                            <?php
 																		
 																		
 																		
@@ -477,36 +481,36 @@
 																		 
 																		 }
 																		?>
-																		
-																	</tbody>
 
-																</table>
-															</div>
-														</div>
-											
-											
-											</div>
-											
-											<div class="tab-pane" id="wikia">
-											
-													<div class="x_panel">
+                                                                        </tbody>
 
-															<div class="x_content">
-																<table id="example5" class="table table-striped responsive-utilities jambo_table">
-																	<thead>
-																		<tr class="headings">
-																			
-																			<th>Tipo</th>
-																			 <th>Título</th>
-																			 <th>Resumen</th>
-																			 <th>Descripción</th>
-																			 <th>Versión</th>
-																			 <th>Fecha</th>
-																		</tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
 
-																	<tbody>
-																		
-																		<?php
+
+                                                    </div>
+
+                                                    <div class="tab-pane" id="wikia">
+
+                                                        <div class="x_panel">
+
+                                                            <div class="x_content">
+                                                                <table id="example5" class="table table-striped responsive-utilities jambo_table">
+                                                                    <thead>
+                                                                        <tr class="headings">
+
+                                                                            <th>Tipo</th>
+                                                                            <th>Título</th>
+                                                                            <th>Resumen</th>
+                                                                            <th>Descripción</th>
+                                                                            <th>Versión</th>
+                                                                            <th>Fecha</th>
+                                                                        </tr>
+
+                                                                        <tbody>
+
+                                                                            <?php
 																		
 																		
 																		
@@ -530,45 +534,45 @@
 																		 
 																		 }
 																		?>
-																		
-																	</tbody>
 
-																</table>
-															</div>
-														</div>
-											
-											
-											</div>
-											
+                                                                        </tbody>
+
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+
                                         </div>
                                     </div>
 
-                                    <div class="clearfix"></div>
+
 
                                 </div>
-                            </div>
-                        
-							
-							
-                        </div>
 
-                        <br />
-                        <br />
-                        <br />
+                                <br />
+                                <br />
+                                <br />
+
+                            </div>
+                        </div>
+                        <!-- footer content -->
+                        <?php
+						include'footer.php';
+					?>
+
+
+
+                            <!-- /footer content -->
 
                     </div>
-                </div>
-                    <!-- footer content -->
-					<?php
-						include'footer.php';
-					?>	
-						
-				
-
-                <!-- /footer content -->
-                    
-                </div>
-                <!-- /page content -->
+                    <!-- /page content -->
             </div>
 
         </div>
@@ -644,8 +648,8 @@
                 });
             });
         </script>
-		
-		<script>
+
+        <script>
             $(document).ready(function () {
                 $('input.tableflat').iCheck({
                     checkboxClass: 'icheckbox_flat-green',
@@ -693,8 +697,8 @@
                 });
             });
         </script>
-		
-		<script>
+
+        <script>
             $(document).ready(function () {
                 $('input.tableflat').iCheck({
                     checkboxClass: 'icheckbox_flat-green',
@@ -742,8 +746,8 @@
                 });
             });
         </script>
-		
-		<script>
+
+        <script>
             $(document).ready(function () {
                 $('input.tableflat').iCheck({
                     checkboxClass: 'icheckbox_flat-green',
@@ -791,8 +795,8 @@
                 });
             });
         </script>
-		
-		<script>
+
+        <script>
             $(document).ready(function () {
                 $('input.tableflat').iCheck({
                     checkboxClass: 'icheckbox_flat-green',
@@ -840,6 +844,6 @@
                 });
             });
         </script>
-</body>
+    </body>
 
-</html>
+    </html>

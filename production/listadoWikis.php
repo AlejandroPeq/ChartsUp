@@ -1,17 +1,13 @@
 <?php
+/*
+This file lists the set of all wikis that exist in Spanish. Having to make a large set of formulas, has a longer response.
+
+It has a search engine where the user can filter by name.
+*/
 
 		ini_set('max_execution_time', 2000);
 		
-		$db = new mysqli('localhost', 'root', '');
-		  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-	   
-		
-		  $db->select_db('tfgdatabase');
+		include 'dbConect.php';
 		  
 		  $query = 'SELECT id_wiki,nombre_wiki, url, paginas_contenido ,media_ediciones, ficheros_subidos, usuarios_registrados
 					FROM wikis where wikis.paginas_contenido != 0';
@@ -50,7 +46,7 @@
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/icheck/flat/green.css" rel="stylesheet">
     <link href="css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
-
+<link rel="icon" href="images/logoTFG.png">
     <script src="js/jquery.min.js"></script>
 
     <!--[if lt IE 9]>

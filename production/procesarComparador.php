@@ -1,15 +1,6 @@
 <?php
 
-$db = new mysqli('localhost', 'root', '');
-  
-$db->query("SET CHARACTER SET UTF8");
-
-if( $db->connect_errno > 0 ){
-die('Unable to connect to database [' . $db->connect_error . ']');
-}
-
-
-$db->select_db('tfgdatabase');
+ include 'dbConect.php';
 
 
 $contador=0;
@@ -777,7 +768,7 @@ $db->query($queryUpadateComparaciones4);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>ColStooy </title>
+    <title>ChartsUp comparator</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -789,7 +780,7 @@ $db->query($queryUpadateComparaciones4);
     <!-- Custom styling plus plugins -->
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/icheck/flat/green.css" rel="stylesheet">
-
+    <link rel="icon" href="images/logoTFG.png">
 	<style>
 	h1,h2,h3, #userName{
 	
@@ -811,6 +802,206 @@ $db->query($queryUpadateComparaciones4);
 
 
 <body class="nav-md">
+
+
+
+<style>
+            #loader-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1000;
+            }
+            
+            #loader {
+                display: block;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                width: 150px;
+                height: 150px;
+                margin: -75px 0 0 -75px;
+                border: 3px solid #3498db;
+                z-index: 1500;
+            }
+            
+            #loader:before {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+                border: 3px solid #e74c3c;
+            }
+            
+            #loader:after {
+                content: "";
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                border: 3px solid #f9c922;
+            }
+            /* change border to transparent and set only border-top to a solid color */
+            
+            #loader {
+                border: 3px solid transparent;
+                border-top-color: #3498db;
+            }
+            
+            #loader:before {
+                border: 3px solid transparent;
+                border-top-color: #e74c3c;
+            }
+            
+            #loader:after {
+                border: 3px solid transparent;
+                border-top-color: #f9c922;
+            }
+            
+            #loader {
+                border-radius: 50%;
+            }
+            
+            #loader:before {
+                border-radius: 50%;
+            }
+            
+            #loader:after {
+                border-radius: 50%;
+            }
+            /* copy and paste the animation inside all 3 elements */
+            /* #loader, #loader:before, #loader:after */
+            
+            -webkit-animation: spin 1.5s linear infinite;
+            animation: spin 1.5s linear infinite;
+            /* include this only once */
+            
+            @-webkit-keyframes spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(0deg);
+                    /* IE 9 */
+                    transform: rotate(0deg);
+                    /* Firefox 16+, IE 10+, Opera */
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(360deg);
+                    /* IE 9 */
+                    transform: rotate(360deg);
+                    /* Firefox 16+, IE 10+, Opera */
+                }
+            }
+            
+            @keyframes spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(0deg);
+                    /* IE 9 */
+                    transform: rotate(0deg);
+                    /* Firefox 16+, IE 10+, Opera */
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(360deg);
+                    /* IE 9 */
+                    transform: rotate(360deg);
+                    /* Firefox 16+, IE 10+, Opera */
+                }
+            }
+            
+            #loader {
+                -webkit-animation: spin 2s linear infinite;
+                animation: spin 2s linear infinite;
+            }
+            
+            #loader:before {
+                -webkit-animation: spin 3s linear infinite;
+                animation: spin 3s linear infinite;
+            }
+            
+            #loader-wrapper .loader-section {
+                position: fixed;
+                top: 0;
+                width: 51%;
+                height: 100%;
+                background: #222222;
+                z-index: 1000;
+            }
+            
+            #loader-wrapper .loader-section.section-left {
+                left: 0;
+            }
+            
+            #loader-wrapper .loader-section.section-right {
+                right: 0;
+            }
+            
+            #loader {
+                z-index: 1001;
+                /* anything higher than z-index: 1000 of .loader-section */
+            }
+            
+            h1 {
+                color: #EEEEEE;
+            }
+            
+            #content {
+                margin: 0 auto;
+                padding-bottom: 50px;
+                width: 80%;
+                max-width: 978px;
+            }
+            /* Loaded */
+            
+            .loaded #loader-wrapper .loader-section.section-left {
+                -webkit-transform: translateX(-100%);
+                /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateX(-100%);
+                /* IE 9 */
+                transform: translateX(-100%);
+                /* Firefox 16+, IE 10+, Opera */
+            }
+            
+            .loaded #loader-wrapper .loader-section.section-right {
+                -webkit-transform: translateX(100%);
+                /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateX(100%);
+                /* IE 9 */
+                transform: translateX(100%);
+                /* Firefox 16+, IE 10+, Opera */
+            }
+            
+            .loaded #loader {
+                opacity: 0;
+            }
+            
+            .loaded #loader-wrapper {
+                visibility: hidden;
+            }
+        </style>
+
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+
+
+        </div>
+
+        <script>
+            $(window).load(function () {
+                // Una vez se cargue al completo la página desaparecerá el div "cargando"
+                $('#loader-wrapper').hide();
+            });
+        </script>
 
     <div class="container body">
 
@@ -1011,8 +1202,8 @@ $db->query($queryUpadateComparaciones4);
 							<div style=" padding-left: 0px;" class="col-md-12 col-sm-12 col-xs-12">
 								<div class="x_panel">
 											<div class="x_title">
-												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
-												
+												<h2><i class="fa fa-bars"></i> Total content pages <small>Content pages per wiki</small></h2>
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -1038,11 +1229,11 @@ $db->query($queryUpadateComparaciones4);
 							
 							</div>
 							
-							<div style="padding-right: 0px; padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
+							<div style=" padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
 								<div class="x_panel">
 											<div class="x_title">
-												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
-												
+												<h2><i class="fa fa-users"></i> Registered Users <small>Registered users per wiki</small></h2>
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal2"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -1071,8 +1262,8 @@ $db->query($queryUpadateComparaciones4);
 							<div style=" padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
 								<div class="x_panel">
 											<div class="x_title">
-												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
-												
+												<h2><i class="fa fa-bars"></i> Editions <small>Editions per wiki</small></h2>
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal3"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -1101,8 +1292,8 @@ $db->query($queryUpadateComparaciones4);
 							<div style=" padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
 								<div class="x_panel">
 											<div class="x_title">
-												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
-												
+												<h2><i class="fa fa-bars"></i> Average Editions <small>Average editions per wiki</small></h2>
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal4"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -1130,8 +1321,8 @@ $db->query($queryUpadateComparaciones4);
 							<div style="padding-right: 0px; padding-left: 0px;" class="col-md-6 col-sm-6 col-xs-12">
 								<div class="x_panel">
 											<div class="x_title">
-												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
-												
+												<h2><i class="fa fa-bars"></i> Uploaded Files<small>Uploaded files per wiki</small></h2>
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal5"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -1168,8 +1359,8 @@ $db->query($queryUpadateComparaciones4);
 
 										<div class="x_panel">
 											<div class="x_title">
-												<h2><i class="fa fa-users"></i> Users <small>Active, Administrator, Burocrat and Rollback</small></h2>
-												
+												<h2><i class="fa fa-bars"></i> Users <small>Actives, Administrators, Bureaucrats & Rollbacks</small></h2>
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal6"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -1196,7 +1387,7 @@ $db->query($queryUpadateComparaciones4);
 										<div class="x_panel">
 											<div class="x_title">
 												<h2><i class="fa fa-clock-o"></i> Users Activity<small>in last 30 days</small></h2>
-												
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal7"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -1220,25 +1411,411 @@ $db->query($queryUpadateComparaciones4);
 										
 
                                     </div>
+                                    
+                                    
+                                    
+                                    
+                                     <!-- Info Modals-->
+
+                                <div id="myModal1" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+												
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i> Information about the panel </h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Total content pages: Content pages per wiki</h1>
+                                                
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                   <p style=" text-align:justify;     margin-top: 15%;">
+													This graph shows the number of pages per compared wiki.
+													<br>
+													</p>
+<p style=" text-align:justify;">
+The X axis displays the wikis (maximum 4) and the Y axis the total number of pages.<br>
+The tooltip bar contains:<br>
+─ The first three icons are used to add a mark (<b>Mark</b>), delete the last mark (<b>Mark Undo</b>) and remove all the marks (<b>Clear</b>) ,respectively.<br>
+─ <b>Data View</b> allows you to change the values.<br>
+─ <b>Line chart</b> turns the panel into a graphic line chart and <b>bar chart</b> changes back to the bar graph.<br>
+─ <b>Refresh</b> returns to the initial state.<br>
+─ <b>Save image</b> saves the graph in PNG format.
+</p>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="myModal2" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i> Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Registered Users: Registered users per wiki</h1>
+                                                
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                    <p style=" text-align:justify;     margin-top: 15%;">
+													This graph shows the number of registered users per compared wiki.
+													<br>
+													</p>
+
+<p style=" text-align:justify;">                                                
+The X axis displays the wikis (maximum 4), and the Y axis the number of registered users.<br>
+The tooltip bar contains:<br>
+─ The first three icons are used to add a mark (<b>Mark</b>), delete the last mark (<b>Mark Undo</b>) and remove all the marks (<b>Clear</b>), respectively.<br>
+─ <b>Data View</b> allows you to change the values.<br>
+─ <b>Line chart</b> turns the panel into a graphic line chart and <b>bar chart</b> changes back to the bar graph.<br>
+─ <b>Refresh</b> returns to the initial state.<br>
+─ <b>Save image</b> saves the graph in PNG format.
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="myModal3" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i> Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Editions: Editions per wiki</h1>
+                                                
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                    <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the number of editions per compared wiki
+													<br>
+													</p>
+                                                    
+<p style=" text-align:justify;">                                                     
+The X axis displays the wikis (maximum 4) and the Y axis the number of editions.<br>
+The tooltip bar contains:<br>
+─ The first three icons are used to add a mark (<b>Mark</b>), delete the last mark (<b>Mark Undo</b>) and remove all the marks (<b>Clear</b>), respectively.<br>
+─ <b>Data View</b> allows you to change the values.<br>
+─ <b>Line chart</b> turns the panel into a graphic line chart and <b>bar chart</b> changes back to the bar graph.<br>
+─ <b>Refresh</b> returns to the initial state.<br>
+─ <b>Save image</b> saves the graph in PNG format.
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="myModal4" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i> Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Average editions: Average editions per wiki</h1>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                    <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the average editions per compared wiki.
+													<br>
+													</p>
+
+<p style=" text-align:justify;">                                                      
+The X axis displays the wikis (maximum 4) and the Y axis the average editions.<br>
+The tooltip bar contains:<br>
+─ The first three icons are used to add a mark (<b>Mark</b>), delete the last mark (<b>Mark Undo</b>) and remove all the marks (<b>Clear</b>), respectively.<br>
+─ <b>Data View</b> allows you to change the values.<br>
+─ <b>Line chart</b> turns the panel into a graphic line chart and <b>bar chart</b> changes back to the bar graph.<br>
+─ <b>Refresh</b> returns to the initial state.<br>
+─ <b>Save image</b> saves the graph in PNG format.
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="myModal5" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i> Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Uploaded files: Uploaded files per wiki</h1>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                    <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the number of uploaded files per compared wiki.
+													<br>
+													</p>
+
+<p style=" text-align:justify;">                                                      
+The X axis displays the wikis (maximum 4) and the Y axis the number of uploaded files.<br>
+The tooltip bar contains:<br>
+─ The first three icons are used to add a mark (<b>Mark</b>), delete the last mark (<b>Mark Undo</b>) and remove all the marks (<b>Clear</b>), respectively.<br>
+─ <b>Data View</b> allows you to change the values.<br>
+─ <b>Line chart</b> turns the panel into a graphic line chart and <b>bar chart</b> changes back to the bar graph.<br>
+─ <b>Refresh</b> returns to the initial state.<br>
+─ <b>Save image</b> saves the graph in PNG format.
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="myModal6" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i>Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Users: Actives, Administrators, Bureaucrats & Rollbacks</h1>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                    <p style=" text-align:justify;     margin-top: 15%;">
+													This graph shows the number of users of each type per compared wiki.
+													<br>
+													</p>
+
+<p style=" text-align:justify;">   
+The X axis displays the user type (active, administrators, bureaucrats & rollbacks) and the Y axis the number for each type.<br>
+Each wiki has a different color.<br>
+The tooltip bar contains:<br>
+─ The first three icons are used to add a mark (<b>Mark</b>), delete the last mark (<b>Mark Undo</b>) and remove all the marks (<b>Clear</b>), respectively.<br>
+─ <b>Data View</b> allows you to change the values.<br>
+─ <b>Line chart</b> turns the panel into a graphic line chart and <b>bar chart</b> changes back to the bar graph.<br>
+─ <b>Stack</b> stacks the users' type values, showing only one bar for each type of user. <b>Separate</b> shows a different bar for each wiki.<br>
+─ <b>Refresh</b> returns to the initial state.<br>
+─ <b>Save image</b> saves the graph in PNG format.                                                    
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="myModal7" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i>Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Users activity: in the last 30 days</h1>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                   <p style=" text-align:justify;     margin-top: 15%;">
+													This graph shows the user activity per compared wiki.
+													<br>
+													</p>
+
+<p style=" text-align:justify;">                                                       
+The tooltip bar contains:<br>
+─ The first three icons are used to add a mark (<b>Mark</b>), delete the last mark (<b>Mark Undo</b>) and remove all the marks (<b>Clear</b>), respectively.<br>
+─ <b>Data View</b> allows you to change the values.<br>
+─ <b>Pie</b> shows the ring type chart, and <b>funnel</b> changes the view to a funnet type chart.<br>
+─ <b>Refresh</b> returns to the initial state.<br>
+─ <b>Save image</b> saves the graph in PNG format.   
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="myModal8" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i> Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Statistics: Special Users, Editions & Pages</h1>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                   <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This table divides its content into 3 tabs:
+													<br>
+													</p>
+
+<p style=" text-align:justify;">
+─ <b>User Statistics</b>: displays the number of registered users, the number of administrators, bureaucrats and rollbacks for each wiki.<br>
+─ <b>Editions Statistics</b>: displays the number of editions since the very begining and the total editions for each wiki.<br> 
+─ <b>Pages Statistics</b>: displays the number of pages, content pages and uploaded files for each wiki.
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                 <div id="myModal9" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-send"></i>Information about the panel</h4>
+                                            </div>
+
+                                            <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                                <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Leaders Board</h1>
+                                                </div>
+
+                                            <div class="modal-body">
+                                                <div style="padding:25px;">
+                                                    <p style=" text-align:justify;     margin-top: 15%;">
+													This table divides its content in tabs, as many as wikis being compared.
+													<br>
+													</p>
+
+<p style=" text-align:justify;">
+Each tab displays the leaderboard information (per wiki):<br>
+─ <b>Users' avatar</b><br>
+─ <b>Users' nickname</b><br>
+─ <b>Points</b> the users have on the wiki<br>
+─ The last <b>badge</b> achieved<br>
+─ The last <b>badge's avatar</b><br>
+</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- End Info modals-->
 									
 									<div class="col-md-7 col-sm-7 col-xs-12" style="padding-right: 0px;">
 										
 
 										<div class="x_panel">
                                 <div class="x_title">
-                                    <h2><i class="fa fa-bars"></i> Statistics <small>Special Users, Editions and Pages</small></h2>
-                                    
+                                    <h2><i class="fa fa-bars"></i> Statistics <small>Special Users, Editions & Pages</small></h2>
+                                      <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal8"><i class="fa fa-info"></i> Info</button>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
 
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                         <ul id="myTab1" class="nav nav-tabs bar_tabs right" role="tablist">
-                                            <li role="presentation" class="active"><a href="#tab_content11" id="home-tabb" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Statistics of Pages</a>
+                                            <li role="presentation" class="active"><a href="#tab_content11" id="home-tabb" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Pages Statistics</a>
                                             </li>
-                                            <li role="presentation" class=""><a href="#tab_content22" role="tab" id="profile-tabb" data-toggle="tab" aria-controls="profile" aria-expanded="false">Statistics of Editions</a>
+                                            <li role="presentation" class=""><a href="#tab_content22" role="tab" id="profile-tabb" data-toggle="tab" aria-controls="profile" aria-expanded="false">Editions Statistics</a>
                                             </li>
-                                            <li role="presentation" class=""><a href="#tab_content33" role="tab" id="profile-tabb3" data-toggle="tab" aria-controls="profile" aria-expanded="true">Statistics of Users</a>
+                                            <li role="presentation" class=""><a href="#tab_content33" role="tab" id="profile-tabb3" data-toggle="tab" aria-controls="profile" aria-expanded="true">Users Statistics</a>
                                             </li>
                                         </ul>
                                         <div id="myTabContent2" class="tab-content">
@@ -1361,8 +1938,8 @@ $db->query($queryUpadateComparaciones4);
 														<tr>
 															<th>#</th>
 															<th>Wiki Name</th>
-															<th>Total editions from origin</th>
-															<th>Average of editions per page</th>
+															<th>Editions from origin</th>
+															<th>Average editions per page</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -1468,11 +2045,11 @@ $db->query($queryUpadateComparaciones4);
 														<tr>
 															<th>#</th>
 															<th>Wiki Name</th>
-															<th>Register Users</th>
+															<th>Registered Users</th>
 															<th>Active Users</th>
-															<th>Administrator Users</th>
-															<th>Burocratar Users</th>
-															<th>Rollback Users</th>															
+															<th>Administrators</th>
+															<th>Bureaucrats</th>
+															<th>Rollbacks</th>															
 														</tr>
 													</thead>
 													<tbody>
@@ -1591,8 +2168,8 @@ $db->query($queryUpadateComparaciones4);
 										
 										<div class="x_panel">
 											<div class="x_title">
-												<h2><i class="fa fa-list-ul"></i> Leaders Board <small>in each wiki selected</small></h2>
-												
+												<h2><i class="fa fa-list-ul"></i> Leaders Board <small>per wiki</small></h2>
+												  <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal9"><i class="fa fa-info"></i> Info</button>
 												<div class="clearfix"></div>
 											</div>
 											<div class="x_content">
@@ -2108,17 +2685,21 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontal4'), theme);
         myChart9.setOption({
                  title : {
-        text: 'Total Pages',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Pages / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Paginas']
+		show: false, 
+        data:['Pages']
     },
     toolbox: {
         show : true,
+         orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
@@ -2143,7 +2724,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Paginas',
+            name:'Pages',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2151,7 +2732,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2180,17 +2761,20 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontal5'), theme);
         myChart9.setOption({
                  title : {
-         text: 'Total Pages',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Pages / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Paginas']
+        data:['Pages']
     },
     toolbox: {
         show : true,
+         orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
@@ -2214,7 +2798,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Paginas',
+            name:'Pages',
             type:'bar',
             smooth:true,
            itemStyle: {
@@ -2222,7 +2806,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2251,17 +2835,21 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontal6'), theme);
         myChart9.setOption({
                  title : {
-         text: 'Total Pages',
-        subtext: 'Compare Statistics'
+       //text: 'Metric used',
+        subtext: 'Pages / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Paginas']
+		show: false,
+        data:['Pages']
     },
     toolbox: {
         show : true,
+         orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
@@ -2285,7 +2873,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Paginas',
+            name:'Pages',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2293,7 +2881,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2323,17 +2911,21 @@ $db->query($queryUpadateComparaciones4);
 		var myChartRegistrados = echarts.init(document.getElementById('echart_bar_horizontal7'), theme);
         myChartRegistrados.setOption({
                  title : {
-        text: 'Total Register Users',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Registered users / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Registrados']
+		show: false,
+        data:['Registered Users']
     },
     toolbox: {
         show : true,
+         orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
@@ -2358,7 +2950,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Registrados',
+            name:'Registered Users',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2366,7 +2958,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2395,17 +2987,21 @@ $db->query($queryUpadateComparaciones4);
 		var myChartRegistrados = echarts.init(document.getElementById('echart_bar_horizontal8'), theme);
         myChartRegistrados.setOption({
                  title : {
-       text: 'Total Register Users',
-        subtext: 'Compare Statistics'
+      //text: 'Metric used',
+        subtext: 'Registered users / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Registrados']
+		show: false,	
+        data:['Registered Users']
     },
     toolbox: {
         show : true,
+         orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
@@ -2429,7 +3025,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Registrados',
+            name:'Registered Users',
             type:'bar',
             smooth:true,
            itemStyle: {
@@ -2437,7 +3033,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2466,17 +3062,21 @@ $db->query($queryUpadateComparaciones4);
 		var myChartRegistrados = echarts.init(document.getElementById('echart_bar_horizontal9'), theme);
         myChartRegistrados.setOption({
                  title : {
-        text: 'Total Register Users',
-        subtext: 'Compare Statistics'
+       // text: 'Metric used',
+        subtext: 'Registered users / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Registrados']
+		show: false,
+        data:['Registered Users']
     },
     toolbox: {
         show : true,
+         orient: 'vertical',
+        x: 'right',
+        y: 'center',
         feature : {
             mark : {show: true},
             dataView : {show: true, readOnly: false},
@@ -2500,7 +3100,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Registrados',
+            name:'Registered Users',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2508,7 +3108,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2536,14 +3136,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalEdiciones4'), theme);
         myChart9.setOption({
                  title : {
-       text: 'Total Editions',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Editions / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Ediciones']
+		show: false,
+        data:['Editions']
     },
     toolbox: {
         show : true,
@@ -2573,7 +3174,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Ediciones',
+            name:'Editions',
             type:'bar',
             smooth:true,
            itemStyle: {
@@ -2581,7 +3182,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2612,14 +3213,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalEdiciones3'), theme);
         myChart9.setOption({
                  title : {
-       text: 'Total Editions',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Editions / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Ediciones']
+		show: false,
+        data:['Editions']
     },
     toolbox: {
         show : true,
@@ -2649,7 +3251,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Ediciones',
+            name:'Editions',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2657,7 +3259,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2686,14 +3288,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalEdiciones2'), theme);
         myChart9.setOption({
                  title : {
-        text: 'Total Editions',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Editions / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Ediciones']
+		show: false,
+        data:['Editions']
     },
     toolbox: {
         show : true,
@@ -2723,7 +3326,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Ediciones',
+            name:'Editions',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2731,7 +3334,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2761,14 +3364,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalFicheros4'), theme);
         myChart9.setOption({
                  title : {
-        text: 'Upload Files',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Uploaded files / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Ficheros']
+		show: false,
+        data:['Uploaded Files']
     },
     toolbox: {
         show : true,
@@ -2798,7 +3402,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Ficheros',
+            name:'Uploaded Files',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2806,7 +3410,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2837,14 +3441,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalFicheros3'), theme);
         myChart9.setOption({
                  title : {
-         text: 'Upload Files',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Uploaded files / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Ficheros']
+		show: false,
+        data:['Uploaded Files']
     },
     toolbox: {
         show : true,
@@ -2874,7 +3479,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Ficheros',
+            name:'Uploaded Files',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2882,7 +3487,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2911,14 +3516,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalFicheros2'), theme);
         myChart9.setOption({
                  title : {
-        text: 'Upload Files',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Uploaded files / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Ficheros']
+		show: false,
+        data:['Uploaded Files']
     },
     toolbox: {
         show : true,
@@ -2948,7 +3554,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Ficheros',
+            name:'Uploaded Files',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -2956,7 +3562,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -2987,14 +3593,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalMediaEdiciones4'), theme);
         myChart9.setOption({
                  title : {
-        text: 'Average Editions',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Average editions / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Media Ediciones']
+		show: false,
+        data:['Average Editions']
     },
     toolbox: {
         show : true,
@@ -3024,7 +3631,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Media Ediciones',
+            name:'Average Editions',
             type:'bar',
             
 			itemStyle: {
@@ -3032,7 +3639,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -3065,14 +3672,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalMediaEdiciones3'), theme);
         myChart9.setOption({
                  title : {
-       text: 'Average Editions',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Average editions / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Media Ediciones']
+		show: false,
+        data:['Average Editions']
     },
     toolbox: {
         show : true,
@@ -3102,7 +3710,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Media Ediciones',
+            name:'Average Editions',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -3110,7 +3718,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {
@@ -3139,14 +3747,15 @@ $db->query($queryUpadateComparaciones4);
 		var myChart9 = echarts.init(document.getElementById('echart_bar_horizontalMediaEdiciones2'), theme);
         myChart9.setOption({
                  title : {
-       text: 'Average Editions',
-        subtext: 'Compare Statistics'
+        //text: 'Metric used',
+        subtext: 'Average editions / Wiki'
     },
     tooltip : {
         trigger: 'axis'
     },
     legend: {
-        data:['Media Ediciones']
+		show: false,
+        data:['Average Editions']
     },
     toolbox: {
         show : true,
@@ -3176,7 +3785,7 @@ $db->query($queryUpadateComparaciones4);
     ],
     series : [
         {
-            name:'Media Ediciones',
+            name:'Average Editions',
             type:'bar',
             smooth:true,
             itemStyle: {
@@ -3184,7 +3793,7 @@ $db->query($queryUpadateComparaciones4);
 					areaStyle: {type: 'default'},
                     color: function(params) {
                         // build a color map as your need.
-                        var colorList = ['#673147','#BDC3C7','#34495E','#0088CC'];
+                        var colorList = ['#673147','#BDC3C7','#34495E','#402629'];
                         return colorList[params.dataIndex]
                     },
 					 label: {

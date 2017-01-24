@@ -1,5 +1,7 @@
 <?php
-
+/*
+It contains the view of a Wiki. From your ID we obtain the information from the database.
+*/
 		$idwiki = $_GET['id'];
 
 		
@@ -19,15 +21,18 @@
 					
 		  //$query2 = 'SELECT * FROM wikis ORDER BY wikis.paginas_contenido DESC LIMIT 1';
 		  
-		  $query2 = 'Select AVG(prueba) as "resultado" from (Select wikis.paginas as "prueba" From Wikis order by wikis.paginas DESC Limit 50) q';
+		  $query2 = 'Select avg(prueba) as "resultado" from (Select wikis.paginas as "prueba" From wikis order by wikis.paginas DESC Limit 50) q';
 		  
 		 
 		  
-		  $query3 = 'Select AVG(prueba) as "resultado" from (Select wikis.ediciones_paginas as "prueba" From Wikis order by wikis.paginas DESC Limit 50) q';
+		  $query3 = 'Select avg(prueba) as "resultado" from (Select wikis.ediciones_paginas as "prueba" From wikis order by wikis.paginas DESC Limit 50) q';
 		  
 		  
-		  $queryMediaDeMedia = 'Select AVG(prueba) as "resultado" from (Select wikis.media_ediciones as "prueba" From Wikis order by wikis.paginas DESC Limit 50) q';
+		  $queryMediaDeMedia = 'Select avg(prueba) as "resultado" from (Select wikis.media_ediciones as "prueba" From wikis order by wikis.paginas DESC Limit 50) q';
 
+		  $queryMediaDeArchivos = 'Select avg(prueba) as "resultado" from (Select wikis.ficheros_subidos as "prueba" From wikis order by wikis.paginas DESC Limit 50) q';
+		  
+		  
 		  
 		   $queryUsuarios = 'SELECT *
 					FROM aportaciones where aportaciones.id_wiki = "'.$idwiki.'"';
@@ -47,6 +52,10 @@
 		  		   if( !$resultqueryMediaDeMedia = $db->query($queryMediaDeMedia) ){
 			die('There was an error running the query [' . $db->error . ']');
 		  }
+		  	 if( !$resultqueryMediaDeArchivos = $db->query($queryMediaDeArchivos) ){
+			die('There was an error running the query [' . $db->error . ']');
+		  }
+		  
 		  
 		   if( !$resultUsuarios = $db->query($queryUsuarios) ){
 			die('There was an error running the query [' . $db->error . ']');
@@ -68,7 +77,7 @@
 		   $rowmedia50paginas = $result2->fetch_object();
 		   $rowmedia50ediciones = $result3->fetch_object();
 		   $rowmedia50media_ediciones = $resultqueryMediaDeMedia->fetch_object();
-
+		   $rowmedia50media_archivos = $resultqueryMediaDeArchivos->fetch_object();
 			//Medias Datos Wikis
 			
 			
@@ -171,7 +180,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Ficha Wiki </title>
+    <title>Colstats: Wiki <?php echo ''.$row->nombre_wiki.''?></title>
 
     <!-- Bootstrap core CSS -->
 	<link href='http://fonts.googleapis.com/css?family=Orbitron:400' rel='stylesheet' type='text/css'>
@@ -184,7 +193,7 @@
     <!-- Custom styling plus plugins -->
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/icheck/flat/green.css" rel="stylesheet">
-
+    <link rel="icon" href="images/logoTFG.png">
 
 	<style>
 	h2,h3{
@@ -209,7 +218,7 @@
 <body class="nav-md">
 
     <div class="container body">
-
+			   		
 
         <div class="main_container">
 
@@ -243,16 +252,16 @@
 								<div class="x_panel">
                                 <div class="x_title">
 									<div class="x_title">
-                                  
+                                  <h1> </h1>
 									
 									
 													<?php
-									
+														echo'<h1><bold>'.$row->nombre_wiki.'</bold>   ';
 														if($row->url_imagen_wiki == ""){
-															echo'<img style="width:8%"  src="images/LargeWikiaLogo.png" alt="Wiki Avatar">';
+															echo'<img style="width:18%"  src="images/LargeWikiaLogo.png" alt="Wiki Avatar"></h1>';
 														}
 														else
-															echo'<img style="width:8%"  src="'.$row->url_imagen_wiki.'" alt="Wiki Avatar">';
+															echo'<img style="width:18%"  src="'.$row->url_imagen_wiki.'" alt="Wiki Avatar"></h1>';
 													?>
 												 
 									
@@ -278,7 +287,7 @@
 												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $row->media_ediciones ?></div>
 
 												<h3>Average Edit.</h3>
-												<p>Global recently editions.</p>
+												<p>Average editions.</p>
 											</div>
 										</div>
 										<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -288,7 +297,7 @@
 												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $row->paginas ?></div>
 
 												<h3>Pages</h3>
-												<p>Global recently editions.</p>
+												<p>Global recently pages.</p>
 											</div>
 										</div>
 										<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -298,7 +307,7 @@
 												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $row->paginas_contenido ?></div>
 
 												<h3>Content Pages</h3>
-												<p>Global recently editions.</p>
+												<p>Global recently content pages.</p>
 											</div>
 										</div>
 										<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -308,7 +317,7 @@
 												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $row->usuarios_activos ?></div>
 
 												<h3>Act. Users</h3>
-												<p>Global recently editions.</p>
+												<p>Number of active users.</p>
 											</div>
 										</div>
 										<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -318,7 +327,7 @@
 												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $row->usuarios_administradores ?></div>
 
 												<h3>Adm. Users</h3>
-												<p>Global recently editions.</p>
+												<p>Number of administrative users.</p>
 											</div>
 										</div>
 										<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -328,7 +337,7 @@
 												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $row->usuarios_burocratas ?></div>
 
 												<h3>Buroc. Users</h3>
-												<p>Total Table Leader points earned.</p>
+												<p>Number of bureaucrats users.</p>
 											</div>
 										</div>
 										<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -338,7 +347,7 @@
 												<div style="font-size:25px; font-family: 'Orbitron', sans-serif;" class="count"><?php echo $row->usuarios_reversores ?></div>
 
 												<h3>Rollb. Users</h3>
-												<p>Total wikis participating now.</p>
+												<p>Number of rollbacks users.</p>
 											</div>
 										</div>
 									</div>
@@ -346,20 +355,21 @@
                                     
                                 </div>
 								</div>
-																<div style="    padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+									<div style="    padding-right: 0px;" class="col-md-6 col-sm-6 col-xs-12 profile_left">
 							 
 							 
 									<div class="x_panel">
                                             <div class="x_title">
-                                                <h2><i class="fa fa-users"></i> Users <small>last common users</small></h2>
+                                                <h2><i class="fa fa-users"></i> List Users <small> editions order by editions</small></h2>
+												<button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal6"><i class="fa fa-info"></i> Info</button>
                                                 
                                                 <div class="clearfix"></div>
                                             </div>
-                                            <ul class="list-unstyled top_profiles scroll-view" style="overflow: hidden; outline: none;height:370px; cursor: -webkit-grab;" tabindex="5001">
+                                            <ul class="list-unstyled top_profiles scroll-view" style="overflow: hidden; outline: none;height:350px; cursor: -webkit-grab;" tabindex="5001">
                                                 
 												<?php
 												
-												$queryUsuariosLideres = 'SELECT * FROM aportaciones where aportaciones.id_wiki = "'.$idwiki.'" ';	
+												$queryUsuariosLideres = 'SELECT * FROM aportaciones where aportaciones.id_wiki = "'.$idwiki.'" order by aportaciones.ediciones DESC';	
 				
 				
 												if( !$resultUsuariosLideres = $db->query($queryUsuariosLideres) ){
@@ -395,14 +405,32 @@
                                         </div>
 							 
 								</div>
-								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+								
+								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-6 col-sm-6 col-xs-12 profile_left">
+										
+										<div class="x_panel">
+											<div class="x_title">
+												<h2><i class="fa fa-bars"></i> Participations in porcent in the last month</h2>
+												<button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal7"><i class="fa fa-info"></i> Info</button>
+												<div class="clearfix"></div>
+											</div>
+											<div class="x_content">
+
+												<div id="echart_donut5" style="height:350px;"></div>
+
+											</div>
+										</div>
+						</div>
+								
+								
+								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-6 col-sm-6 col-xs-12 profile_left">
 							 
 							 
 
 											<div class="x_panel">
                                 <div class="x_title">
                                     <h2><i class="fa fa-bars"></i> Page Statistics <!--<small>Editions, Pages and Files</small>--></h2>
-                                    
+                                    <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal8"><i class="fa fa-info"></i> Info</button>
                                     <div class="clearfix"></div>
                                 </div>
 								<br />
@@ -418,14 +446,14 @@
 							 
 								</div>
 								
-								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-6 col-sm-6 col-xs-12 profile_left">
 							 
 							 
 
 											<div class="x_panel">
                                 <div class="x_title">
                                     <h2><i class="fa fa-bars"></i> Editions Statistics <!--<small>Editions, Pages and Files</small>--></h2>
-                                    
+						<button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal9"><i class="fa fa-info"></i> Info</button>                                    
                                     <div class="clearfix"></div>
                                 </div>
 								<br />
@@ -441,20 +469,40 @@
 							 
 								</div>
 								
-								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+								<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-6 col-sm-6 col-xs-12 profile_left">
 							 
 							 
 
 											<div class="x_panel">
                                 <div class="x_title">
                                     <h2><i class="fa fa-bars"></i> Average Editions Statistics <!--<small>Editions, Pages and Files</small>--></h2>
-                                    
+                                <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModa20"><i class="fa fa-info"></i> Info</button>    
                                     <div class="clearfix"></div>
                                 </div>
 								<br />
                                 <div class="x_content">
 
                                     <div id="echart_Barras3" style="height:350px;"></div>
+
+									</div>
+								
+								</div>
+							</div>
+							
+															<div style=" padding-left: 0px;   padding-right: 0px;" class="col-md-6 col-sm-6 col-xs-12 profile_left">
+							 
+							 
+
+											<div class="x_panel">
+                                <div class="x_title">
+                                    <h2><i class="fa fa-bars"></i> Number of Files <small>Editions, Pages & Files</small></h2>
+                                    <button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModa22"><i class="fa fa-info"></i> Info</button>
+                                    <div class="clearfix"></div>
+                                </div>
+								<br />
+                                <div class="x_content">
+
+                                    <div id="echart_Barras_Files" style="height:350px;"></div>
 
                                 </div>
 								
@@ -474,22 +522,22 @@
 							
 							</div>
 						
-						
+
 						<div class="col-md-12 col-sm-12 col-xs-12" >
 										
 						
 						
 										<div class="x_panel">
-										
+										<button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModa21"><i class="fa fa-info"></i> Info</button>
                                         <!-- end of user-activity-graph -->
 
                                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
 
-                                                <li role="presentation" class=""><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">General Statistics</a>
+                                               <!-- <li role="presentation" class=""><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">General Statistics</a>
                                                 </li>
-                                                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Last Leader Wiki Badges</a>
-                                                </li>                                           
+                                                <!--<li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Last Leader Wiki Badges</a>
+                                                </li>   -->                                        
 												
 												<li role="presentation" class="active"><a href="#tab_content5" role="tab" id="profile-tab3" data-toggle="tab" aria-expanded="false">Leader Wiki Users</a>
                                                 </li>
@@ -902,16 +950,19 @@
 																		  
 																		 echo'
 																																	
-																		<div class="col-md-3 col-sm-3 col-xs-12 animated fadeInDown">
-																			<a href="fichaUsuario.php?nombre='.$rowUsuarios->nombre_usuario.'"><div class="well profile_view">
-																				<div class="col-sm-12" style="  min-height: 140px;">
+																		<div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown">
+																			<a href="fichaUsuario.php?nombre='.$rowUsuarios->nombre_usuario.'">
+																			<div class="well profile_view">
+																				<div class="col-sm-12" style="  min-height: 320px; height: 240px;">
 																					
 																					<div class="left col-xs-7">
-																						<img style="height: 50px;width: 50px;margin: 5px 10px 5px 0;border-radius: 50%;" src="'.$rowUsuarios->url_avatar_usuario.'" class="avatar" alt="Avatar">
+																						<img style="height: 60px;width: 60px;margin: 5px 10px 5px 0;border-radius: 50%;" src="'.$rowUsuarios->url_avatar_usuario.'" class="avatar" alt="Avatar">
 																						<h2>'.$rowUsuarios->nombre_usuario.'</h2>
 																						
-																						<p><strong>Ediciones:</strong>'.$rowUsuarioEdiciones->ediciones.'</p>
-																						
+																						<p><strong>Editions: </strong>'.$rowUsuarioEdiciones->ediciones.'</p>
+																																												<br>
+																						<p><strong>Description: </strong>'.$rowUsuariosLideres->descripcion_logro.'.</p>
+																						</br>
 																					</div>
 																					<div class="right col-xs-5 text-center">
 																						<img src="'.$rowUsuarios->url_imagen_logro.'" alt="" class="img-circle img-responsive">
@@ -928,7 +979,7 @@
 																					<div class="col-xs-12 col-sm-6 emphasis">
 																						
 																						<a href="fichaUsuario.php?nombre='.$rowUsuarios->nombre_usuario.'" ><button  type="button" class="btn btn-primary btn-xs"> <i class="fa fa-user">
-																							</i> Go to User</button></a>
+																							</i> Go to User</button></a> 
 																					</div>
 																				</div>
 																			</div></a>
@@ -959,6 +1010,227 @@
                             </div>
                         </div>
                     </div>
+					
+					                            <div id="myModal6" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Users List: Users ordered by their editions
+</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                    This panel shows the list of users of this wiki.<br>
+													The list is ordered by the users number of editions.<br>
+													It also provides access to the users profile.													
+                                                    </p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+							<div id="myModal7" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">User's Participation in the last month
+</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the user's participation (percentage) in this wiki.
+                                                    <br>
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                The top 10 users are displayed in the chart.<br>
+												The tooltip bar contains:<br>
+												─ <b>Refresh</b> returns to the initial state.<br>
+												─ <b>Save image</b> saves the graph in PNG format.    
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+							                            <div id="myModal8" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Pages Statistics</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the number of pages of the wiki, along with the pages of the Top 50 wikis<br>
+                                                    and the rest of the communities.
+                                                    <br><br>
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                The tooltip bar contains:<br>
+                                                ─ <b>Refresh</b> returns to the initial state.<br>
+                                                ─ <b>Save image</b> saves the graph in PNG format. 
+												</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+							                            <div id="myModal9" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i> Information about the panel </h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Editions Statistics
+</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the number of editions of the wiki, along with the editions of the Top 50 wikis<br>
+                                                    and the rest of the communities.
+                                                    <br><br>
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                The tooltip bar contains:<br>
+                                                ─ <b>Refresh</b> returns to the initial state.<br>
+                                                ─ <b>Save image</b> saves the graph in PNG format.
+												</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+							                            <div id="myModa20" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Average Editions Statistics</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the average editions of the wiki, along with the average editions of the Top 50 wikis<br>
+													and	the rest of the communities.
+                                                    <br>
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                The tooltip bar contains:<br>
+												─ <b>Refresh</b> returns to the initial state.<br>
+												─ <b>Save image</b> saves the graph in PNG format.    
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+							<div id="myModa22" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Number of Files: Editions, Pages & Files</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                    This graph shows the average editions of the wiki, along with the average editions of the Top 50 wikis<br>
+													and	the rest of the communities.
+                                                    <br>
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                The tooltip bar contains:<br>
+												─ <b>Refresh</b> returns to the initial state.<br>
+												─ <b>Save image</b> saves the graph in PNG format.    
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+							                            <div id="myModa21" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i> Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Leader Wiki Users</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                    This table shows the leader users of the wiki, along with the user's last badge and its description.<br>
+													It contains the user's position on the LeaderBoard, and the number of editions.<br>
+													It also provides access to the user's profile.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 					
 					
 					
@@ -1166,7 +1438,7 @@
 							}
 						},
 						legend: {
-							data:['<?php echo''.$row->nombre_wiki.''; ?>']
+							data:['Number of Pages']
 						},
 						toolbox: {
 							show : true,
@@ -1195,7 +1467,7 @@
 						],
 						series : [
 							{
-								name:'<?php echo''.$row->nombre_wiki.''; ?>',
+								name:'Number of Pages',
 								type:'bar',
 								data:[<?php echo''.$row->paginas.''; ?>, <?php echo''.$rowmedia50paginas->resultado.''; ?>, <?php echo ''.$rowMediaPaginas->paginas.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
 							}
@@ -1212,7 +1484,7 @@
 							}
 						},
 						legend: {
-							data:['<?php echo''.$row->nombre_wiki.''; ?>']
+							data:['Number of Editions']
 						},
 						toolbox: {
 							show : true,
@@ -1241,7 +1513,7 @@
 						],
 						series : [
 							{
-								name:'<?php echo''.$row->nombre_wiki.''; ?>',
+								name:'Number of Editions',
 								type:'bar',
 								data:[<?php echo''.$row->ediciones_paginas.''; ?>, <?php echo''.$rowmedia50ediciones->resultado.''; ?>, <?php echo''.$rowMediaEdicionesPaginas->ediciones.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
 							}
@@ -1258,7 +1530,7 @@
 							}
 						},
 						legend: {
-							data:['<?php echo''.$row->nombre_wiki.''; ?>']
+							data:['Average Editions']
 						},
 						toolbox: {
 							show : true,
@@ -1287,13 +1559,239 @@
 						],
 						series : [
 							{
-								name:'<?php echo''.$row->nombre_wiki.''; ?>',
+								name:'Average Editions',
 								type:'bar',
 								data:[<?php echo''.$row->media_ediciones.''; ?>, <?php echo''.$rowmedia50media_ediciones->resultado.''; ?>, <?php echo''.$rowMediaEdicionesMediaPaginas->media.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
 							}
 			
 						]
 					});
+					
+					
+			   		
+	   
+	   
+	   
+	var myChart15 = echarts.init(document.getElementById('echart_donut5'), theme); //Este es el nuevo a poner
+		
+        myChart15.setOption({
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            calculable: true,
+            color:['#673147','#BDC3C7','#34495E','#402629','#26C0C0', '#27727B',
+                           '#FE8463','#E5C964', '#A62029' ,'#915D8E','#F3A43B',
+                           '#D7504B','#C6E579'],
+            toolbox: {
+                show: true,
+                feature: {
+                 /*   magicType: {
+                        show: true,
+                        type: ['pie'],
+                        option: {
+                           /* funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'center',
+                                max: 1548
+                            }
+                        }
+                    },*/
+                    restore: {
+                        show: true
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+		legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:[
+		<?php
+			
+						 $query333 =  'SELECT * FROM aportaciones where id_wiki= '.$idwiki.' ORDER BY aportaciones.ediciones DESC LIMIT 10';
+							
+						if( !$result333 = $db->query($query333) ){
+						die('There was an error running the query [' . $db->error . ']');
+					  }
+
+					  $num_resultsListado333 = $result333->num_rows;
+						$restarTotal =0;
+						 for( $i333 = 1; $i333 <= $num_resultsListado333; $i333++ ){
+							 $row333 = $result333->fetch_object();
+							 
+							
+								 echo "'$row333->nombre_usuario',";
+	
+						 }
+						 echo "'Other Users'";
+						 
+		
+		?>
+		
+		]
+    },
+            series: [
+                {
+                    name: 'Wiki',
+                    type: 'pie',
+                    radius: [90, 130],
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: false
+                            },
+                            labelLine: {
+                                show: false
+                            }
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    fontWeight: 'normal'
+                                }
+                            }
+                        }
+                    },
+                    data: [
+		<?php
+			
+						 $query3 =  'SELECT * FROM aportaciones where id_wiki= '.$idwiki.' ORDER BY aportaciones.ediciones DESC LIMIT 10';
+							
+						if( !$result3 = $db->query($query3) ){
+						die('There was an error running the query [' . $db->error . ']');
+					  }
+
+					  $num_resultsListado3 = $result3->num_rows;
+						$restarTotal =0;
+						 for( $i3 = 1; $i3 <= $num_resultsListado3; $i3++ ){
+						 
+						 $row3 = $result3->fetch_object();
+							$restarTotal = $restarTotal + $row3->ediciones;
+							 echo '{
+								 value: '.$row3->ediciones.',
+								 name: "'.$row3->nombre_usuario.'"
+							 },';
+						 }
+						$query4 =  'SELECT SUM(ediciones) as `asd` from `aportaciones` where id_wiki= '.$idwiki.'';
+							
+						if( !$result4 = $db->query($query4) ){
+						die('There was an error running the query [' . $db->error . ']');
+					  }
+					  
+						 $row4 = $result4->fetch_object();
+						 $numeroExacto = $row4->asd - $restarTotal;
+						echo' {
+							 value: '.$numeroExacto.',
+							 name: "Other Users"
+						 },';
+						 
+							 ?>
+
+                ]
+            }
+        ]
+        });
+		
+							var myChart10 = echarts.init(document.getElementById('echart_Barras_Files'), theme);
+							myChart10.setOption({
+						tooltip : {
+							trigger: 'axis',
+							axisPointer : {            
+								type : 'shadow'        
+							}
+						},
+						legend: {
+							data:['Number of Files']
+						},
+						toolbox: {
+							show : true,
+							orient: 'vertical',
+							x: 'right',
+							y: 'center',
+							feature : {
+								//mark : {show: true},
+								//dataView : {show: true, readOnly: false},
+								//magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+								restore : {show: true},
+								saveAsImage : {show: true}
+							}
+						},
+						calculable : true,
+						xAxis : [
+							{
+								type : 'category',
+								data : ['This Wiki','50 Top Wikis','All Wikis'/*,'ficheros'*/]
+							}
+						],
+						yAxis : [
+							{
+								type : 'value'
+							}
+						],
+						series : [
+							{
+								name:'Number of Files',
+								type:'bar',
+								data:[<?php echo''.$row->ficheros_subidos.''; ?>, <?php echo''.$rowmedia50media_archivos->resultado.''; ?>, <?php echo ''.$rowMediaFicherosSubidos->ficheros.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
+							}
+			
+						]
+					});
+                    
+					var myChart10 = echarts.init(document.getElementById('echart_Barras2'), theme);
+							myChart10.setOption({
+						tooltip : {
+							trigger: 'axis',
+							axisPointer : {            
+								type : 'shadow'        
+							}
+						},
+						legend: {
+							data:['Number of Editions']
+						},
+						toolbox: {
+							show : true,
+							orient: 'vertical',
+							x: 'right',
+							y: 'center',
+							feature : {
+								//mark : {show: true},
+								//dataView : {show: true, readOnly: false},
+								//magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+								restore : {show: true},
+								saveAsImage : {show: true}
+							}
+						},
+						calculable : true,
+						xAxis : [
+							{
+								type : 'category',
+								data : ['This Wiki','50 Top Wikis','All Wikis'/*,'ficheros'*/]
+							}
+						],
+						yAxis : [
+							{
+								type : 'value'
+							}
+						],
+						series : [
+							{
+								name:'Number of Editions',
+								type:'bar',
+								data:[<?php echo''.$row->ediciones_paginas.''; ?>, <?php echo''.$rowmedia50ediciones->resultado.''; ?>, <?php echo''.$rowMediaEdicionesPaginas->ediciones.''; ?>/*, <?php echo''.$row->ficheros_subidos.''; ?>*/]
+							}
+			
+						]
+					});
+		
+	
         </script>
 		
 		<script>
@@ -1347,7 +1845,11 @@
        
     ]
 });
-                    
+       
+   
+
+</script>
+	   
 
 		</script>
    

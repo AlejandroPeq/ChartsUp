@@ -1,17 +1,14 @@
-<!DOCTYPE html>
+<!--
+Form for the user to send a message to the support team of the application.
+It contains personal information, email, query type and message.
+
+You must read and accept the privacy policy.
+
+--><!DOCTYPE html>
 
 <?php
 
-$db = new mysqli('localhost', 'root', '');
-		  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-	   
-		
-		  $db->select_db('tfgdatabase');
+ include 'dbConect.php';
 		  
 		  $query = 'SELECT * FROM preguntas';
 					

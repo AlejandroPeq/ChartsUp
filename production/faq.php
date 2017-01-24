@@ -1,17 +1,12 @@
 <!DOCTYPE html>
+<!--
 
+FAQ contains the application.
+The questions and answers are obtained through a call to the database. 
+-->
 <?php
 
-$db = new mysqli('localhost', 'root', '');
-		  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-	   
-		
-		  $db->select_db('tfgdatabase');
+ include 'dbConect.php';
 		  
 		  $query = 'SELECT * FROM preguntas';
 					

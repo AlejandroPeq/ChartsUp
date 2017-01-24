@@ -3,9 +3,8 @@
 		
 
 		
-		  $db = new mysqli('localhost', 'root', '');
-		  $db->select_db('tfgdatabase');
-		  $db->query("SET CHARACTER SET UTF8");
+		  include 'dbConect.php';
+
 		  
 		  if( $db->connect_errno > 0 ){
 			die('Unable to connect to database [' . $db->connect_error . ']');
@@ -180,12 +179,13 @@ $ejeX = $_POST["ejeX"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentallela Alela! | </title>
+    <title>ChartsUp - Scatter Graph </title>
 
     <!-- Bootstrap core CSS -->
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+<link rel="icon" href="images/logoTFG.png">
     <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
 
@@ -219,7 +219,7 @@ $ejeX = $_POST["ejeX"];
                                                 <?php
 				include'menuLateral.php';
 			?>
-            </div>
+            
 
             <!-- top navigation -->
             <div class="top_nav">
@@ -228,7 +228,7 @@ $ejeX = $_POST["ejeX"];
 				include'barraSuperior.php';
 			?>
             <!-- /top navigation -->
-
+</div>
             <!-- page content -->
             <div class="right_col" role="main">
 
@@ -239,7 +239,7 @@ $ejeX = $_POST["ejeX"];
                     <div class="row">
 					<div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Customizable</h2>
+                                    <h2>Customizable Scatter</h2>
                                     
                                     <div class="clearfix"></div>
                                 </div>
@@ -249,7 +249,7 @@ $ejeX = $_POST["ejeX"];
 												<div class="col-md-6 col-sm-6 col-xs-12">
  
 													<div class="form-group">
-														<label>Axis X <span class="required">*</span></label>
+														<label>X Axis<span class="required">*</span></label>
 													
 														<select class="select2_single form-control" tabindex="-1" name="ejeX" required="required">
 															
@@ -272,14 +272,14 @@ $ejeX = $_POST["ejeX"];
 												<div class="col-md-6 col-sm-6 col-xs-12">
  
 													<div class="form-group">
-														<label>Axis Y <span class="required">*</span></label>
+														<label>Y Axis<span class="required">*</span></label>
 													
 														<select class="select2_single form-control" tabindex="-1" name="ejeY" required="required">
 															<option value="Paginas">Number of Pages</option>;
-															<option value="Edits">Number of Edits</option>;
+															<option value="Edits">Number of Editions</option>;
 															<option value="Admin">Number of Adminstrators</option>;
-															<option value="Revers">Number of Reversors</option>;
-															<option value="Buroc">Number of Burocratas</option>;
+															<option value="Revers">Number of Rollbacks</option>;
+															<option value="Buroc">Number of Bureaucrats</option>;
 															<option value="MediaEdiciones">Average of Editions</option>;
 															<option value="Files">Number of Files</option>;
 															<option value="ActiveUsers">Active Users</option>;
@@ -293,7 +293,7 @@ $ejeX = $_POST["ejeX"];
 												<div class="col-md-3 col-sm-3 col-xs-12">
  
 													<div class="form-group">
-														<label>Min Value for Axis X</label>
+														<label>Min Value for X Axis</label>
 													
 														<input type="text" class="select2_single form-control text" tabindex="-1" name="minX">
 														
@@ -307,7 +307,7 @@ $ejeX = $_POST["ejeX"];
 												<div class="col-md-3 col-sm-3 col-xs-12">
  
 													<div class="form-group">
-														<label>Max Value for Axis X</label>
+														<label>Max Value for X Axis</label>
 													
 														<input type="text" class="select2_single form-control text" tabindex="-1" name="maxX"/>
 
@@ -319,7 +319,7 @@ $ejeX = $_POST["ejeX"];
 												<div class="col-md-3 col-sm-3 col-xs-12">
  
 													<div class="form-group">
-														<label>Min Value for Axis Y</label>
+														<label>Min Value for Y Axis</label>
 													
 														<input type="text" class="select2_single form-control text" tabindex="-1" name="minY"/>
 														
@@ -333,7 +333,7 @@ $ejeX = $_POST["ejeX"];
 												<div class="col-md-3 col-sm-3 col-xs-12">
  
 													<div class="form-group">
-														<label>Max Value for Axis Y</label>
+														<label>Max Value for Y Axis</label>
 													
 														<input type="text" class="select2_single form-control text" tabindex="-1" name="maxY"/>
 
@@ -349,7 +349,7 @@ $ejeX = $_POST["ejeX"];
 														<div class="actionBar">
 														</div>
 														
-														<button type="submit" class="btn btn-success btn-lg">Display!</button>
+														<button type="submit" class="btn btn-success btn-lg">Display</button>
 													</div>
 												</div>
 												

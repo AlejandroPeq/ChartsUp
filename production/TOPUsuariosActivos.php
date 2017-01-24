@@ -19,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentallela Alela! | </title>
+    <title>ChartsUp - Top Active Users </title> 
 
     <!-- Bootstrap core CSS -->
 
@@ -33,6 +33,7 @@
     <link href="css/icheck/flat/green.css" rel="stylesheet">
 
 
+<link rel="icon" href="images/logoTFG.png">
     <script src="js/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
@@ -44,7 +45,18 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+	<style>
+	h2,h3{
+	
+		font-family: 'Montserrat Alternates', sans-serif;
+	}
+	
+	.DTTT_button{
+		
+		display:none;
+		
+	}
+	</style>
 </head>
 
 
@@ -58,7 +70,7 @@
                                              <?php
 				include'menuLateral.php';
 			?>
-            </div>
+         
 
             <!-- top navigation -->
             <div class="top_nav">
@@ -80,12 +92,14 @@
                     <div class="row">
 					
 					<!-- Aqui esta la primera linea -->
-					<div class="col-md-3 col-sm-12 col-xs-12">
-                                        <div>
+					<div class="col-md-5 col-sm-12 col-xs-12">
+                                        
 								<div class="x_panel">
 
                                             <div class="x_title">
-                                                <h2>Top 5 Wikis with most active users</h2>
+                                                <h2>Top 10 Wikis with more active users</h2>
+												<button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal6"><i class="fa fa-info"></i> Info</button>
+
 
                                                 <div class="clearfix"></div>
                                             </div>
@@ -94,7 +108,7 @@
 
 											<?php
 													//EJEMPLO PARA TOP5 WIKIS CON + FICHEROS SUBIDOS
-													 $query2 = 'SELECT * FROM wikis ORDER BY wikis.usuarios_activos DESC LIMIT 5';
+													 $query2 = 'SELECT * FROM wikis ORDER BY wikis.usuarios_activos DESC LIMIT 10';
 						
 													  if( !$result2 = $db->query($query2) ){
 														die('There was an error running the query [' . $db->error . ']');
@@ -109,8 +123,8 @@
                                                     <a href="fichaWiki.php?id='.$row2->id_wiki.'"><img style="height: 50px;width: 50px;margin: 5px 10px 5px 0;border-radius: 50%;" src="'.$row2->url_imagen_wiki.'" class="avatar" alt="Avatar"></a>
                                                     <div class="media-body">
                                                         <a class="title" href="fichaWiki.php?id='.$row2->id_wiki.'">'.$row2->nombre_wiki.' </a>  
-                                                        <p><strong>'.$row2->usuarios_activos.'</strong> usuarios activos</p>
-                                                        <p> <small>Contiene '.$row2->usuarios_registrados.' usuarios registrados</small>
+                                                        <p><strong>'.$row2->usuarios_activos.'</strong> active users</p>
+                                                        <p> <small>'.$row2->usuarios_registrados.' registered users</small>
                                                         </p>
                                                     </div>
 													</li>';
@@ -124,25 +138,10 @@
                                             </ul>
 											
                                         </div>
-										</div>
+										
                         </div>
 						
-						   <div class="col-md-9 col-sm-9 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>The 10 Wikis with most active users</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
 
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-
-                                    <div id="mainb" style="height:350px;"></div>
-
-                                </div>
-                            </div>
-                        </div>
 					
 					<!-- Aquí está la segunda línea-->
 					
@@ -154,10 +153,12 @@
 						
 
 				
-						<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="col-md-7 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Graphic active users on Wikia</h2>
+                                    <h2>Wikis with more active users on Wikia</h2>
+									<button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal7"><i class="fa fa-info"></i> Info</button>
+
                                     <!--<ul class="nav navbar-right panel_toolbox">
                                         <li><a href="#"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -183,8 +184,117 @@
                             </div>
                         </div>			
 							
+												   <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Top 10 Wikis with more active users</h2>
+									<button style="float:right;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal8"><i class="fa fa-info"></i> Info</button>
+
+                                    <ul class="nav navbar-right panel_toolbox">
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <div id="mainb" style="height:350px;"></div>
+
+                                </div>
+                            </div>
+                        </div>
 						
-						
+							<!-- Buttons -->
+					
+											 <div id="myModal6" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Top 10 wikis with more active users</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                This list shows the 10 wikis with more active users.<br>
+												The list is sorted from highest to lowest number of active users.<br>
+												Each component of the list shows the number of active users and the total number of registered users
+												</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+													 <div id="myModal7" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Percentage of wikis with more active users</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                This graph shows the percentage of wikis (proportion) with the highest number of active users.<br>
+													The tooltip bar contains:<br>
+													─ <b>Refresh</b> returns to the initial state.<br>
+													─ <b>Save image</b> saves the graph in PNG format.
+												</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+													 <div id="myModal8" class="modal fade bs-example-modal-lg" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close"><span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bars"></i>Information about the panel</h4>
+                                        </div>
+                                        <div class="x_content" style="background-image:url(images/ChartPanelPopup1.jpg); height:140px;">
+                                            <h1 style="color:white; position:relative;   left: 4%; top: 30%;">Top 10 Wikis with more active users</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div style="padding:25px;">
+                                                <p style=" text-align:justify;     margin-top: 15%;">
+                                                </p>
+                                                <p style=" text-align:justify;">
+                                                This panel shows the 10 wikis with more active users.<br> 
+													In this case it is a bar graph where each wiki has a different color.<br> 
+													The X axis shows the wikis, and the Y axis shows the number of active users.<br>
+													The tooltip bar contains:<br>
+													─ <b>Refresh</b> returns to the initial state.<br>
+													─ <b>Save image</b> saves the graph in PNG format.
+												</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 						
 
 
@@ -234,13 +344,39 @@
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
             calculable: true,
-            /*legend: {
-                //orient: 'vertical',
-                //x: 'left',
-                x: 'center',
-                y: 'bottom',
-                data: ['Wiki 1', 'Otras Wikis', 'Wiki 2', 'Wiki 3', 'Wiki 4', 'Otras Wikis 1', 'Wiki 5', 'Wiki 6', 'Wiki 7', 'Wiki 8']
-            },*/
+			            color:['#673147','#BDC3C7','#34495E','#402629','#26C0C0', '#27727B',
+                           '#FE8463','#E5C964', '#A62029' ,'#915D8E','#F3A43B',
+                           '#D7504B','#C6E579'],
+		legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:[
+		<?php
+			
+						 $query333 =  'SELECT * FROM wikis ORDER BY wikis.usuarios_activos DESC LIMIT 10';
+							
+						if( !$result333 = $db->query($query333) ){
+						die('There was an error running the query [' . $db->error . ']');
+					  }
+
+					  $num_resultsListado333 = $result333->num_rows;
+						$restarTotal =0;
+						 for( $i333 = 1; $i333 <= $num_resultsListado333; $i333++ ){
+							 $row333 = $result333->fetch_object();
+							 
+						if(strpos($row333->nombre_wiki, "'") == true ){
+							$row333->nombre_wiki = str_replace(array('<', '>', "'", '&', '{', '}', '*'), array(' '), $row333->nombre_wiki);
+						}							
+								 echo "'$row333->nombre_wiki',";
+	
+						 }
+						 echo "'Other Wikis'";
+						 
+		
+		?>
+		
+		]
+    },
             toolbox: {
                 show: true,
                 feature: {
@@ -257,10 +393,10 @@
                         }
                     },*/
                     restore: {
-                        show: true
+                        show: false
                     },
                     saveAsImage: {
-                        show: true
+                        show: false
                     }
                 }
             },
@@ -303,6 +439,10 @@
 						 for( $i3 = 1; $i3 <= $num_resultsListado3; $i3++ ){
 						 
 						 $row3 = $result3->fetch_object();
+						 if(strpos($row3->nombre_wiki, "'") == true ){
+							$row3->nombre_wiki = str_replace(array('<', '>', "'", '&', '{', '}', '*'), array(' '), $row3->nombre_wiki);
+						}				
+						 
 							$restarTotal = $restarTotal + $row3->usuarios_activos;
 							 echo '{
 								 value: '.$row3->usuarios_activos.',
@@ -319,7 +459,7 @@
 						 $numeroExacto = $row4->asd - $restarTotal;
 						echo' {
 							 value: '.$numeroExacto.',
-							 name: "Otras Wikis"
+							 name: "Other Wikis"
 						 },';
 						 
 							 ?>
@@ -374,6 +514,10 @@
 			
 			 for( $i23 = 1; $i23 <= $num_resultsListado23; $i23++ ){
 					$row23 = $result23->fetch_object();
+					if(strpos($row23->nombre_wiki, "'") == true ){
+							$row23->nombre_wiki = str_replace(array('<', '>', "'", '&', '{', '}', '*'), array(' '), $row23->nombre_wiki);
+						}				
+					
 					echo "'$row23->nombre_wiki' "; //Solucionar esto.
 					if($i23 != $num_resultsListado23)
 						echo ',';
@@ -398,9 +542,9 @@
                     color: function(params) {
                         // build a color map as your need.
                         var colorList = [
-                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
-                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+           '#673147','#BDC3C7','#34495E','#402629','#26C0C0', '#27727B',
+                           '#FE8463','#E5C964', '#A62029' ,'#915D8E','#F3A43B',
+                           '#D7504B','#C6E579'
                         ];
                         return colorList[params.dataIndex]
                     },

@@ -1,3 +1,8 @@
+<!--
+This file contains the top bar of the web application, used in all our views.
+It has a smaller icon to the sidebar, the application notifications and helpful links.
+
+-->
 <div class="nav_menu">
                     <nav class="" role="navigation">
                         <div class="nav toggle">
@@ -28,7 +33,7 @@
                             </li>
 							
 							<?php
-							
+							//Call to the database for the last 5 news on the web.
 							  $db2 = new mysqli('localhost', 'root', '');
 		  
 							  $db2->query("SET CHARACTER SET UTF8");

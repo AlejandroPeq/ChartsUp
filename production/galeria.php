@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!-- 
+The gallery shows in alphabetical order the set of all Wikis. Grouped by their first letter.
+You need to make a call for each letter.
+-->
+
 <html>
 
 <head>
@@ -8,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Buscador </title>
+    <title>Seeker </title>
 
     <!-- Bootstrap core CSS -->
 
@@ -20,7 +25,7 @@
     <!-- Custom styling plus plugins -->
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/icheck/flat/green.css" rel="stylesheet">
-
+<link rel="icon" href="images/logoTFG.png">
 
     <script src="js/jquery.min.js"></script>
 
@@ -38,16 +43,7 @@
 	
 	// Create DOM from URL or file
 
-		$db = new mysqli('localhost', 'root', '');
-			  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-
-		 
-		  $db->select_db('tfgdatabase');
+		 include 'dbConect.php';
 		  
 		   $queryA = 'SELECT * FROM wikis where wikis.nombre_wiki like "A%"';
 											

@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-
-$db = new mysqli('localhost', 'root', '');
-		  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-	   
-		
-		  $db->select_db('tfgdatabase');
+//This is the main panel, which shows global statistics and links the application.
+include 'dbConect.php';
 		  
 		  $query = 'SELECT * FROM wikis';
 					

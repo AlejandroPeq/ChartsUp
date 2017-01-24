@@ -1,17 +1,11 @@
 <?php
-
+/*
+This file displays a list of wikis that begin with the character "8".
+It also shows some basic statistics such as number of conditions and files.
+*/
 		ini_set('max_execution_time', 2000);
 		
-		$db = new mysqli('localhost', 'root', '');
-		  
-		  $db->query("SET CHARACTER SET UTF8");
-		  
-		  if( $db->connect_errno > 0 ){
-			die('Unable to connect to database [' . $db->connect_error . ']');
-		  }
-	   
-		
-		  $db->select_db('tfgdatabase');
+		include 'dbConect.php';
 		  
 		  $query = 'SELECT id_wiki,nombre_wiki, url, paginas_contenido ,media_ediciones, ficheros_subidos, usuarios_registrados
 					FROM wikis where wikis.nombre_wiki like "8%"';
@@ -50,7 +44,7 @@
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/icheck/flat/green.css" rel="stylesheet">
     <link href="css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
-
+<link rel="icon" href="images/logoTFG.png">
     <script src="js/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
@@ -153,11 +147,11 @@
                                                     <input type="checkbox" class="tableflat">
                                                 </th>
                                                 <th>ID Wiki </th>
-                                                 <th>Nombre wiki </th>
-												 <th>Páginas Contenido </th>
-												 <th>Ficheros Subidos </th>
-												 <th>Ediciones Medias en Wiki </th>
-                                                <th class=" no-link last"><span class="nobr">Usuarios Registrados</span>
+                                                 <th>Name wiki </th>
+												 <th>Pages Content </th>
+												 <th>Number of Files </th>
+												 <th>Average Editions </th>
+                                                <th class=" no-link last"><span class="nobr">Number of Users</span>
                                                 </th>
                                             </tr>
 
